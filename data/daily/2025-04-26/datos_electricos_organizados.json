@@ -1,0 +1,475 @@
+{
+  "2022": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2023": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2024": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2025": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [
+      {
+        "id": 0,
+        "fecha": "2025-04-26 11:59:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 1771,
+            "demanda_maxima": 3400,
+            "afectacion": 1699,
+            "deficit": 1629,
+            "respaldo": "Entrada de la central de motores de fuel de Mariel con 131 MW",
+            "horario_pico": "Horario pico nocturno"
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 1640,
+            "demanda": 2700,
+            "deficit": 1100,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 1380,
+              "hora_estimada": "Media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 5,
+                "unidades": [
+                  5
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Antonio Maceo",
+                "unidad": 3,
+                "unidades": [
+                  3
+                ],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": 3,
+                "unidades": [
+                  3,
+                  4
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Renté",
+                "unidad": 5,
+                "unidades": [
+                  5
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 355,
+              "tipo": "Limitaciones térmicas"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 105,
+              "impacto_mw": 741,
+              "causa": "Falta de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": 8,
+            "produccion_mwh": 966,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 24,
+            "continuidad_afectacion": "Continua",
+            "maximo": {
+              "mw": 1867,
+              "hora": "20:10",
+              "fecha": "Ayer",
+              "nota": "No coincidente con la hora de máxima demanda"
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "id": 1,
+        "fecha": "2025-04-25 09:05:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 1650,
+            "demanda_maxima": 3380,
+            "afectacion": 1800,
+            "deficit": 1730,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 1650,
+            "demanda": 2710,
+            "deficit": 1060,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 1250,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": null,
+                "unidades": [
+                  3,
+                  4
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Renté",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 399,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 104,
+              "impacto_mw": 725,
+              "causa": "falta de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Mariel",
+                "motores_afectados": null,
+                "mw_afectados": 50,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": 8,
+            "produccion_mwh": 986,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 24,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 1680,
+              "hora": "19:20",
+              "fecha": "ayer",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "id": 2,
+        "fecha": "2025-04-24 07:59:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 1720,
+            "demanda_maxima": 3380,
+            "afectacion": 1730,
+            "deficit": 1660,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 1660,
+            "demanda": 2780,
+            "deficit": 1150,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 1280,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": null,
+                "unidades": [
+                  3,
+                  4
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Renté",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 321,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 103,
+              "impacto_mw": 700,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": 8,
+            "produccion_mwh": 1064,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 1901,
+              "hora": "20:10",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "id": 3,
+        "fecha": "2025-04-22 16:02:00",
+        "datos": {
+          "zonas_con_problemas": [
+            "Cienfuegos"
+          ],
+          "fecha_reporte": null,
+          "prediccion": {
+            "disponibilidad": null,
+            "demanda_maxima": null,
+            "afectacion": null,
+            "deficit": null,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "",
+            "disponibilidad": null,
+            "demanda": null,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [],
+            "mantenimiento": [
+              {
+                "planta": "Carlos Manuel de Céspedes",
+                "unidad": null,
+                "unidades": [],
+                "tipo": "termoeléctrica"
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": null,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": null,
+              "impacto_mw": null,
+              "causa": ""
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": null,
+              "hora": "",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      }
+    ],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  }
+}

@@ -1,0 +1,112 @@
+{
+    "2025": {
+        "enero": [
+            {
+                "fecha": "",
+                "datos": {
+                    "zonas_con_problemas": [],
+                    "fecha_reporte": "",
+                    "prediccion": {
+                        "disponibilidad": null,
+                        "demanda_maxima": null,
+                        "afectacion": null,
+                        "deficit": null,
+                        "respaldo": null,
+                        "horario_pico": ""
+                    },
+                    "info_matutina": {
+                        "hora": "",
+                        "disponibilidad": null,
+                        "demanda": null,
+                        "deficit": null,
+                        "proyeccion_mediodia": {
+                            "afectacion_estimada": null,
+                            "hora_estimada": ""
+                        }
+                    },
+                    "plantas": {
+                        "averia": [
+                            {
+                                "planta": "",
+                                "unidad": null,
+                                "unidades": [],
+                                "tipo": ""
+                            }
+                        ],
+                        "mantenimiento": [
+                            {
+                                "planta": "",
+                                "unidad": null,
+                                "unidades": [],
+                                "tipo": ""
+                            }
+                        ],
+                        "limitacion_termica": {
+                            "mw_afectados": null,
+                            "tipo": ""
+                        }
+                    },
+                    "distribuida": {
+                        "motores_con_problemas": {
+                            "total": null,
+                            "impacto_mw": null,
+                            "causa": ""
+                        },
+                        "problemas_lubricantes": {
+                            "mw_afectados": null,
+                            "unidades_afectadas": ""
+                        },
+                        "patanas_con_problemas": [
+                            {
+                                "patana_nombre": null,
+                                "motores_afectados": null,
+                                "mw_afectados": null,
+                                "recuperacion_estimada": {
+                                    "motores": null,
+                                    "mw": null,
+                                    "horario": "",
+                                    "estado": ""
+                                }
+                            }
+                        ]
+                    },
+                    "paneles_solares": {
+                        "cantidad_parques": null,
+                        "produccion_mwh": null,
+                        "nuevos_parques": null,
+                        "capacidad_instalada": null,
+                        "periodo_produccion": ""
+                    },
+                    "impacto": {
+                        "horas_totales": null,
+                        "continuidad_afectacion": null,
+                        "maximo": {
+                            "mw": null,
+                            "hora": "",
+                            "fecha": "",
+                            "nota": ""
+                        },
+                        "tendencia": ""
+                    }
+                }
+            }
+        ],
+        "febrero": [],
+        "marzo": [],
+        "abril": []
+    },
+    "2024": {
+        "enero": [],
+        "febrero": [],
+        "marzo": [],
+        "abril": [],
+        "mayo": [],
+        "junio": [],
+        "julio": [],
+        "agosto": [],
+        "septiembre": [],
+        "octubre": [],
+        "noviembre": [],
+        "diciembre": []
+    }
+}
