@@ -12,7 +12,7 @@ import logging
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import argparse
-
+import shutil
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_dir = os.path.dirname(current_dir)
@@ -328,8 +328,6 @@ class DailyPipeline:
                             logger.warning(f"Elemento no válido o sin enlace: {item}")
                             continue
 
-                        # Solo agregar si el enlace no está en los datos existentes
-
             logger.info(
                 f"Se agregaron {items_added} elementos nuevos al JSON principal"
             )
@@ -345,7 +343,7 @@ class DailyPipeline:
                 with open(processed_path, "w", encoding="utf-8") as f:
                     json.dump(main_data, f, ensure_ascii=False, indent=2)
                 logger.info(f"Copia del JSON guardada en {processed_path}")
-
+                shutil.move(main_json_path, "data")
                 return True
             except Exception as e:
                 logger.error(f"Error al guardar el archivo JSON principal: {e}")
