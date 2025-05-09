@@ -5,14 +5,13 @@ Pipeline diario para extraer y procesar información sobre afectaciones eléctri
 import os
 import sys
 import json
-import time
 import requests
 import pandas as pd
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 from bs4 import BeautifulSoup
 import argparse
-import shutil
+
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_dir = os.path.dirname(current_dir)
@@ -100,7 +99,7 @@ class DailyPipeline:
             DataFrame con los artículos encontrados
         """
         logger.info(
-            f"Iniciando scraping de artículos recientes (últimos {max_pages} páginas)"
+            f"Iniciando scraping de artículos recientes (últimos {self.days_lookback} páginas)"
         )
 
         existing_df = self.existing_data
@@ -109,11 +108,6 @@ class DailyPipeline:
             if not existing_df.empty and "Enlace" in existing_df.columns
             else set()
         )
-
-        min_date = (self.today - timedelta(days=self.days_lookback)).strftime(
-            "%Y-%m-%d"
-        )
-        logger.info(f"Buscando artículos desde: {min_date}")
 
         articles_data = []
 
@@ -129,11 +123,9 @@ class DailyPipeline:
                     },
                 )
                 response.raise_for_status()
-                logger.info(f"Procesando página {page_num + 1} de {self.days_lookback}")
+                logger.info(f"Procesando página {page_num } de {self.days_lookback}")
                 soup = BeautifulSoup(response.text, "html.parser")
                 articles = soup.find_all("div", class_=["bigimage_post", "image_post"])
-
-                found_recent = False
 
                 for article in articles:
                     title = article.find("div", class_="title").get_text(strip=True)
@@ -149,38 +141,75 @@ class DailyPipeline:
                         else ""
                     )
 
-                    if any(
-                        keyword in title
-                        for keyword in [
-                            "Unión Eléctrica pronostica",
-                            "Unión Eléctrica estima",
-                            "UNE pronostica",
-                            "UNE estima",
-                            "UNE preve",
-                            "UNE prevé",
-                            "Unión Eléctrica preve",
-                            "Unión Eléctrica prevé",
-                            "Unión Eléctrica: Déficit ",
-                            "UNE: Déficit ",
-                            "Unión Eléctrica Déficit",
-                            "Pronostican afectación de más de",
-                            "Pronostican afectación de mas de"
-                            "UNE Déficit"
-                            "Pronóstico de la UNE advierte",
-                            "Pronóstico de la Unión Eléctrica advierte",
-                            "UNE: Afectaciones por déficit",
-                            "Unión Eléctrica: Afectaciones por déficit",
-                            "UNE Afectaciones por déficit",
-                            "Unión Eléctrica Afectaciones por déficit",
-                            "La UNE calcula",
-                            "La Unión Eléctrica calcula",
-                            "Déficit en la generación eléctrica",
-                            "La afectación al servicio eléctrico",
-                            "UNE: Prevén afectación",
-                            "UNE Prevén afectación",
-                            "Unión Eléctrica: Prevén afectación",
-                            "Unión Eléctrica Prevén afectación",
-                        ]
+                    if (
+                        any(
+                            keyword in title
+                            for keyword in [
+                                "UNE pronóstica déficit en pico nocturno de 1570 MW",
+                                "Pronóstico de la UNE advierte sobre afectaciones de 1 417 megawatts en horario de máxima demanda"
+                                "Unión Eléctrica: Afectación en horario pico nocturno de este 4 de abril asciende a 1680 MW",
+                                "Para este domingo se prevé una afectación estimada de 1 130 MW en el horario pico",
+                                "Felton 1 se reincorpora al SEN: Afectación estimada de 1410 MW en pico nocturno de este martes",
+                                "Unión Eléctrica: Unidad uno de la termoeléctrica Felton en proceso de arranque",
+                                "Unión Eléctrica pronostica",
+                                "Unión Eléctrica estima",
+                                "UNE pronostica",
+                                "UNE estima",
+                                "UNE preve",
+                                "UNE prevé",
+                                "UNE prevé afectación",
+                                "Unión Eléctrica preve",
+                                "Unión Eléctrica prevé",
+                                "Unión Eléctrica: Déficit ",
+                                "Déficit de generación eléctrica",
+                                "UNE: Déficit ",
+                                "Unión Eléctrica proyecta",
+                                "UNE informa",
+                                "Unión Eléctrica Déficit",
+                                "Pronostican afectación de más de",
+                                "Pronostican afectación de mas de",
+                                "Pronostica la UNE afectación ",
+                                "Pronostica la Unión Eléctrica afectación "
+                                "UNE Déficit"
+                                "Pronóstico de la UNE advierte",
+                                "Pronóstico de la Unión Eléctrica advierte",
+                                "UNE: Afectaciones por déficit",
+                                "Unión Eléctrica: Afectaciones por déficit",
+                                "UNE Afectaciones por déficit",
+                                "Unión Eléctrica Afectaciones por déficit",
+                                "La UNE calcula",
+                                "La Unión Eléctrica calcula",
+                                "Déficit en la generación eléctrica",
+                                "La afectación al servicio eléctrico",
+                                "UNE: Prevén afectación",
+                                "UNE Prevén afectación",
+                                "Unión Eléctrica: Prevén afectación",
+                                "Unión Eléctrica Prevén afectación",
+                                "Déficit energético superará",
+                            ]
+                        )
+                        or "Pronóstico de la UNE advierte sobre afectaciones de 1 417 megawatts en horario de máxima demanda"
+                        in title
+                        or "Unión Eléctrica: Afectación en horario pico nocturno de este 4 de abril asciende a 1680 MW"
+                        in title
+                        or "UNE: Se pronostica una afectación de 1490 MW para el horario pico"
+                        in title
+                        or "UNE: Para el horario pico se prevé una afectación estimada de 1314 MW"
+                        in title
+                        or "UNE: Para el horario pico se prevé una afectación estimada de 1311 MW"
+                        in title
+                        or "Prevén afectación de 1 385 megawatts durante el horario pico nocturno de este lunes"
+                        in title
+                        or "UNE: Se pronostica una afectación de 1365 MW para el horario pico"
+                        in title
+                        or "Prevé la UNE déficit de 1 260 megawatts durante el horario pico nocturno de este jueves"
+                        in title
+                        or "UNE: Se pronostica una afectación de 1421 MW en el horario pico"
+                        in title
+                        or "Unión Eléctrica: Afectación de 1420 MW en el horario pico, con mayor incidencia en centro y oriente"
+                        in title
+                        or "Unión Eléctrica: El Sistema Eléctrico Nacional opera de manera estable (+Video)"
+                        in title
                     ):
                         logger.info(f"Artículo encontrado: {title}")
 
@@ -195,16 +224,9 @@ class DailyPipeline:
                             article_date = article_content.get("Fecha", "").split("T")[
                                 0
                             ]
-                            if article_date >= min_date:
-                                found_recent = True
-                                articles_data.append(article_content)
-                                logger.info(
-                                    f"Artículo agregado: {title} - {article_date}"
-                                )
-                            else:
-                                logger.debug(
-                                    f"Artículo demasiado antiguo: {title} - {article_date}"
-                                )
+
+                            articles_data.append(article_content)
+                            logger.info(f"Artículo agregado: {title} - {article_date}")
 
             except Exception as e:
                 logger.error(f"Error en página {page_num}: {e}")
