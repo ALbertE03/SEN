@@ -1,0 +1,614 @@
+{
+  "2022": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2023": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2024": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2025": {
+    "enero": [],
+    "febrero": [
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2025/02/28/la-afectacion-al-servicio-electrico-podria-alcanzar-los-1-625-megawatts-durante-el-horario-pico-nocturno-segun-la-une/",
+        "fecha": "2025-02-28 09:01:00",
+        "datos": {
+          "zonas_con_problemas": [
+            "zona centro-oriental"
+          ],
+          "fecha_reporte": "viernes, 28 de febrero de 2025",
+          "prediccion": {
+            "disponibilidad": 1695,
+            "demanda_maxima": 3250,
+            "afectacion": 1625,
+            "deficit": 1555,
+            "respaldo": null,
+            "horario_pico": "horario pico nocturno"
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 1520,
+            "demanda": 2315,
+            "deficit": 795,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 1150,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "termoeléctrica del Mariel",
+                "unidad": 5,
+                "unidades": [
+                  5
+                ],
+                "tipo": "termoeléctrica"
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [
+                  1
+                ],
+                "tipo": "termoeléctrica"
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 5,
+                "unidades": [
+                  5
+                ],
+                "tipo": "termoeléctrica"
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 1,
+                "unidades": [
+                  1,
+                  2
+                ],
+                "tipo": "termoeléctrica"
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": "termoeléctrica"
+              },
+              {
+                "planta": "CTE de Cienfuegos",
+                "unidad": 3,
+                "unidades": [
+                  3,
+                  4
+                ],
+                "tipo": "termoeléctrica"
+              },
+              {
+                "planta": "termoeléctrica Renté",
+                "unidad": 5,
+                "unidades": [
+                  5
+                ],
+                "tipo": "termoeléctrica"
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 310,
+              "tipo": "limitaciones térmicas"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 76,
+              "impacto_mw": 522,
+              "causa": "carencia de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 24,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 1719,
+              "hora": "7:20 p.m.",
+              "fecha": "jueves, 27 de febrero de 2025",
+              "nota": "coincidente con la hora de máxima demanda"
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2025/02/21/deficit-en-la-generacion-electrica-podria-alcanzar-los-1564-mw-en-horario-pico-nocturno-informo-la-union-electrica/",
+        "fecha": "2025-02-21 09:39:00",
+        "datos": {
+          "zonas_con_problemas": [
+            "zona centro-oriental"
+          ],
+          "fecha_reporte": "21 de febrero",
+          "prediccion": {
+            "disponibilidad": 1756,
+            "demanda_maxima": 3250,
+            "afectacion": 1564,
+            "deficit": 1494,
+            "respaldo": "Entrada de 7 motores de fuel de Moa y 5 motores de la Patana de Regla",
+            "horario_pico": "Nocturno"
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 1600,
+            "demanda": 2310,
+            "deficit": 710,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 950,
+              "hora_estimada": "Mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": null,
+                "unidades": [
+                  "Unidad 1",
+                  "Unidad 2"
+                ],
+                "tipo": "Avería"
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": "Unidad 2",
+                "unidades": [
+                  "Unidad 3",
+                  "Unidad 4"
+                ],
+                "tipo": "Mantenimiento"
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": null,
+                "unidades": [
+                  "Unidad 3",
+                  "Unidad 4"
+                ],
+                "tipo": "Mantenimiento"
+              },
+              {
+                "planta": "CTE Renté",
+                "unidad": "Unidad 5",
+                "unidades": [],
+                "tipo": "Mantenimiento"
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 438,
+              "tipo": "Limitaciones térmicas"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 77,
+              "impacto_mw": 418,
+              "causa": "Falta de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Patana de Regla",
+                "motores_afectados": 5,
+                "mw_afectados": 45,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 24,
+            "continuidad_afectacion": "Continua",
+            "maximo": {
+              "mw": 1615,
+              "hora": "7:10 p.m.",
+              "fecha": "Ayer",
+              "nota": "Coincidente con la hora de máxima demanda"
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2025/02/01/une-preven-afectacion-de-1-505-megawatts-durante-el-horario-pico-nocturno-de-este-sabado/",
+        "fecha": "2025-02-01 09:31:00",
+        "datos": {
+          "zonas_con_problemas": [
+            "zona centro-oriental"
+          ],
+          "fecha_reporte": "sábado 1 de febrero",
+          "prediccion": {
+            "disponibilidad": 1765,
+            "demanda_maxima": 3200,
+            "afectacion": 1505,
+            "deficit": 1435,
+            "respaldo": null,
+            "horario_pico": "nocturno"
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 1765,
+            "demanda": 2150,
+            "deficit": 385,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 980,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "Renté",
+                "unidad": 3,
+                "unidades": [
+                  3
+                ],
+                "tipo": "termoeléctrica"
+              },
+              {
+                "planta": "Felton",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": "termoeléctrica"
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "Santa Cruz",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": "Central Termoeléctrica"
+              },
+              {
+                "planta": "Cienfuegos",
+                "unidad": 3,
+                "unidades": [
+                  3,
+                  4
+                ],
+                "tipo": "Central Termoeléctrica"
+              },
+              {
+                "planta": "Felton",
+                "unidad": 1,
+                "unidades": [
+                  1
+                ],
+                "tipo": "termoeléctrica"
+              },
+              {
+                "planta": "Renté",
+                "unidad": 5,
+                "unidades": [
+                  5
+                ],
+                "tipo": "Central Termoeléctrica"
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 277,
+              "tipo": "térmicas"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 64,
+              "impacto_mw": 431,
+              "causa": "falta de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 1511,
+              "hora": "6:30 p.m.",
+              "fecha": "viernes 31 de enero",
+              "nota": "coincidiendo con la hora de mayor demanda"
+            },
+            "tendencia": null
+          }
+        }
+      }
+    ],
+    "marzo": [],
+    "abril": [
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2025/04/12/pronostican-afectacion-de-mas-de-1-500-mw-durante-el-horario-pico-nocturno-de-este-sabado/",
+        "fecha": "2025-04-12 10:11:00",
+        "datos": {
+          "zonas_con_problemas": null,
+          "fecha_reporte": "sábado",
+          "prediccion": {
+            "disponibilidad": 1810,
+            "demanda_maxima": 3300,
+            "afectacion": 1560,
+            "deficit": 1490,
+            "respaldo": null,
+            "horario_pico": "nocturno"
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 1810,
+            "demanda": 2260,
+            "deficit": 473,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 750,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": "Termoeléctrica"
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": "Termoeléctrica"
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": "Termoeléctrica"
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": 3,
+                "unidades": [
+                  3,
+                  4
+                ],
+                "tipo": "Termoeléctrica"
+              },
+              {
+                "planta": "CTE Renté",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": "Termoeléctrica"
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 391,
+              "tipo": "términca"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 81,
+              "impacto_mw": 553,
+              "causa": "escasez de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": 107,
+              "unidades_afectadas": null
+            },
+            "patanas_con_problemas": null
+          },
+          "paneles_solares": {
+            "cantidad_parques": 8,
+            "produccion_mwh": 895,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": "viernes"
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 1604,
+              "hora": "20:20",
+              "fecha": "viernes",
+              "nota": "coincidiendo con la hora de máxima demanda"
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2025/04/10/la-une-calcula-una-afectacion-de-1540-mw-para-el-horario-pico-de-este-jueves/",
+        "fecha": "2025-04-10 09:33:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 1930,
+            "demanda_maxima": 3400,
+            "afectacion": 1540,
+            "deficit": 1470,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 1860,
+            "demanda": 2520,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 950,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": null,
+                "unidades": [
+                  3,
+                  4
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Renté",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 394,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 60,
+              "impacto_mw": 345,
+              "causa": "falta de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": 208,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": 8,
+            "produccion_mwh": 803,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 24,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 1631,
+              "hora": "19:40",
+              "fecha": "miércoles",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      }
+    ],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  }
+}

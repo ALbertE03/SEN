@@ -100,7 +100,7 @@ class DailyPipeline:
             DataFrame con los artículos encontrados
         """
         logger.info(
-            f"Iniciando scraping de artículos recientes (últimos {self.days_lookback} días)"
+            f"Iniciando scraping de artículos recientes (últimos {max_pages} páginas)"
         )
 
         existing_df = self.existing_data
@@ -117,8 +117,8 @@ class DailyPipeline:
 
         articles_data = []
 
-        for page_num in range(1, max_pages + 1):
-            url = f"http://www.cubadebate.cu/categoria/temas/economia-temas/page/{page_num}/"
+        for page_num in range(1, self.days_lookback + 1):
+            url = f"http://www.cubadebate.cu/page/{page_num}/"
             logger.info(f"Revisando página: {url}")
 
             try:
@@ -129,7 +129,7 @@ class DailyPipeline:
                     },
                 )
                 response.raise_for_status()
-
+                logger.info(f"Procesando página {page_num + 1} de {self.days_lookback}")
                 soup = BeautifulSoup(response.text, "html.parser")
                 articles = soup.find_all("div", class_=["bigimage_post", "image_post"])
 
@@ -150,18 +150,36 @@ class DailyPipeline:
                     )
 
                     if any(
-                        keyword.lower() in title.lower()
-                        or keyword.lower() in excerpt.lower()
+                        keyword in title
                         for keyword in [
-                            "eléctrica",
-                            "Unión Eléctrica",
-                            "apagón",
-                            "UNE",
-                            "corte de luz",
-                            "generación eléctrica",
-                            "MW",
-                            "Felton",
-                            "termoeléctrica",
+                            "Unión Eléctrica pronostica",
+                            "Unión Eléctrica estima",
+                            "UNE pronostica",
+                            "UNE estima",
+                            "UNE preve",
+                            "UNE prevé",
+                            "Unión Eléctrica preve",
+                            "Unión Eléctrica prevé",
+                            "Unión Eléctrica: Déficit ",
+                            "UNE: Déficit ",
+                            "Unión Eléctrica Déficit",
+                            "Pronostican afectación de más de",
+                            "Pronostican afectación de mas de"
+                            "UNE Déficit"
+                            "Pronóstico de la UNE advierte",
+                            "Pronóstico de la Unión Eléctrica advierte",
+                            "UNE: Afectaciones por déficit",
+                            "Unión Eléctrica: Afectaciones por déficit",
+                            "UNE Afectaciones por déficit",
+                            "Unión Eléctrica Afectaciones por déficit",
+                            "La UNE calcula",
+                            "La Unión Eléctrica calcula",
+                            "Déficit en la generación eléctrica",
+                            "La afectación al servicio eléctrico",
+                            "UNE: Prevén afectación",
+                            "UNE Prevén afectación",
+                            "Unión Eléctrica: Prevén afectación",
+                            "Unión Eléctrica Prevén afectación",
                         ]
                     ):
                         logger.info(f"Artículo encontrado: {title}")
@@ -187,16 +205,6 @@ class DailyPipeline:
                                 logger.debug(
                                     f"Artículo demasiado antiguo: {title} - {article_date}"
                                 )
-
-                        time.sleep(1)
-
-                if not found_recent and page_num > 1:
-                    logger.info(
-                        f"No se encontraron más artículos recientes en la página {page_num}. Finalizando."
-                    )
-                    break
-
-                time.sleep(2)
 
             except Exception as e:
                 logger.error(f"Error en página {page_num}: {e}")
@@ -343,7 +351,6 @@ class DailyPipeline:
                 with open(processed_path, "w", encoding="utf-8") as f:
                     json.dump(main_data, f, ensure_ascii=False, indent=2)
                 logger.info(f"Copia del JSON guardada en {processed_path}")
-                shutil.move(main_json_path, "data")
                 return True
             except Exception as e:
                 logger.error(f"Error al guardar el archivo JSON principal: {e}")
@@ -471,7 +478,7 @@ class DailyPipeline:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the daily pipeline.")
     parser.add_argument(
-        "--days_lookback", type=int, default=1, help="Number of days to look back"
+        "--pages_lookback", type=int, default=1, help="Number of pages to look back"
     )
     parser.add_argument(
         "--analize_all", type=bool, default=False, help="Analyze all articles if True"
@@ -494,7 +501,7 @@ if __name__ == "__main__":
         model="accounts/fireworks/models/llama-v3p3-70b-instruct",
         template_path="template.json",
         data_dir="data",
-        days_lookback=args.days_lookback,
+        days_lookback=args.pages_lookback,
     )
 
     success = pipeline.run(analize_all=args.analize_all)
