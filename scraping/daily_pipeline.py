@@ -11,7 +11,7 @@ import logging
 from datetime import datetime
 from bs4 import BeautifulSoup
 import argparse
-
+from dotenv import load_dotenv
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_dir = os.path.dirname(current_dir)
@@ -505,7 +505,6 @@ if __name__ == "__main__":
     parser.add_argument(
         "--analize_all", type=bool, default=False, help="Analyze all articles if True"
     )
-    from dotenv import load_dotenv
 
     load_dotenv()
     args = parser.parse_args()
