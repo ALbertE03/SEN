@@ -247,6 +247,8 @@ class DailyPipeline:
                         in title
                         or "UNE: Se pronostica una afectación de 783 MW en el horario pico"
                         in title
+                        or "UNE: Se pronostica una afectación de 390 MW en el horario pico"
+                        in title
                     ):
                         logger.info(f"Artículo encontrado: {title}")
 
