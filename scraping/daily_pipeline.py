@@ -37,7 +37,14 @@ logger = logging.getLogger("daily_pipeline")
 class DailyPipeline:
 
     def __init__(
-        self, api_key, model=None, template_path=None, data_dir="data", days_lookback=1
+        self,
+        api_key,
+        a,
+        b,
+        model=None,
+        template_path=None,
+        data_dir="data",
+        days_lookback=1,
     ):
         """
         Inicialización del pipeline
@@ -49,6 +56,8 @@ class DailyPipeline:
             data_dir (str): Directorio para guardar los datos
             days_lookback (int): Número de días hacia atrás para buscar artículos
         """
+        if a > b:
+            raise ValueError("a tiene que ser menor que b")
         self.api_key = api_key
         self.model = model
         self.template_path = template_path or os.path.join(
@@ -62,6 +71,12 @@ class DailyPipeline:
         os.makedirs(os.path.join(data_dir, "processed"), exist_ok=True)
         self.existing_data = self.load_existing_data()
         logger.info(f"Inicializado pipeline para fecha: {self.date_str}")
+        if a != 1 and b != 2:
+            self.a = a
+            self.b = b
+        else:
+            self.a = None
+            self.b = None
 
     def load_existing_data(self):
         """
@@ -98,10 +113,6 @@ class DailyPipeline:
         Returns:
             DataFrame con los artículos encontrados
         """
-        logger.info(
-            f"Iniciando scraping de artículos recientes (últimos {self.days_lookback} páginas)"
-        )
-
         existing_df = self.existing_data
         existing_urls = (
             set(existing_df["Enlace"].tolist())
@@ -111,7 +122,10 @@ class DailyPipeline:
 
         articles_data = []
 
-        for page_num in range(1, self.days_lookback + 1):
+        for page_num in range(
+            1 if self.a is None else self.a,
+            self.days_lookback + 1 if self.b is None else self.b,
+        ):
             url = f"http://www.cubadebate.cu/page/{page_num}/"
             logger.info(f"Revisando página: {url}")
 
@@ -123,7 +137,6 @@ class DailyPipeline:
                     },
                 )
                 response.raise_for_status()
-                logger.info(f"Procesando página {page_num } de {self.days_lookback}")
                 soup = BeautifulSoup(response.text, "html.parser")
                 articles = soup.find_all("div", class_=["bigimage_post", "image_post"])
 
@@ -209,6 +222,30 @@ class DailyPipeline:
                         or "Unión Eléctrica: Afectación de 1420 MW en el horario pico, con mayor incidencia en centro y oriente"
                         in title
                         or "Unión Eléctrica: El Sistema Eléctrico Nacional opera de manera estable (+Video)"
+                        in title
+                        or "Unión Eléctrica: Se pronostica una afectación de 1155 MW en el pico nocturno de martes"
+                        in title
+                        or "Afectación eléctrica para el pico nocturno de este lunes superará los 1300 MW, informa la UNE"
+                        in title
+                        or "UNE: Se pronostica una afectación de 1378 MW en el horario pico"
+                        in title
+                        or "Déficit en pico nocturno de este lunes sobrepasa los 1100 MW, informa Unión Eléctrica"
+                        in title
+                        or "Prevén afectación de 835 MW durante el horario pico nocturno de este jueves"
+                        in title
+                        or "Unión eléctrica informa afectación de 850 MW en el horario pico nocturno"
+                        in title
+                        or "El déficit en pico nocturno será de 860 MW este domingo"
+                        in title
+                        or "Estima Unión Eléctrica para la hora pico una afectación de 857 MW en el país"
+                        in title
+                        or "UNE: Se pronostica una afectación de 725 MW en el horario pico"
+                        in title
+                        or "UNE: Se pronostica una afectación de 560 MW en el horario pico de este domingo"
+                        in title
+                        or "Pronostica la UNE un déficit de 540 MW en horario de máxima demanda"
+                        in title
+                        or "UNE: Se pronostica una afectación de 783 MW en el horario pico"
                         in title
                     ):
                         logger.info(f"Artículo encontrado: {title}")
@@ -505,6 +542,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--analize_all", type=bool, default=False, help="Analyze all articles if True"
     )
+    parser.add_argument("--a", type=int, default=1, help="range a")
+    parser.add_argument("--b", type=int, default=2, help="range b")
 
     load_dotenv()
     args = parser.parse_args()
@@ -519,6 +558,8 @@ if __name__ == "__main__":
 
     pipeline = DailyPipeline(
         api_key=api_key,
+        a=args.a,
+        b=args.b,
         model="accounts/fireworks/models/llama-v3p3-70b-instruct",
         template_path="template.json",
         data_dir="data",
