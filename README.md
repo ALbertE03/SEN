@@ -58,12 +58,14 @@ export FIREWORKS_API_KEY="tu-api-key"
 Para ejecutar el pipeline manualmente:
 
 ```bash
-./start_daily_monitoring.sh --days_lookback 4 --analize_all False
+./start_daily_monitoring.sh --pages_lookback 4 --analize_all False --a 300 --b 450
 ```
 
-- `--days_lookback`: Número de días hacia atrás para buscar artículos (por defecto es 1).
-- `--analize_all`: Si se debe analizar todos los artículos de data/raw/afectaciones_electricas_cubadebate_filter_2025.csv(por defecto es False).
-
+- `--pages_lookback`: Número de páginas hacia atrás para buscar artículos (por defecto es 1).
+- `--analize_all`: Si se debe analizar todos los artículos de data/raw/afectaciones_electricas_cubadebate_filter_2025.csv (por defecto es False).
+- `--a`: página inicial para el scraping.
+- `--b`: página final para el scraping.
+- `si a>b => error`
 
 ### Configuración de Ejecución Automática
 
@@ -72,16 +74,19 @@ Para ejecutar el pipeline manualmente:
 Para configurar la ejecución automática en sistemas Linux o Mac, usaremos `cron`:
 
 1. Abre la terminal y edita el crontab con:
+
    ```bash
    crontab -e
    ```
 
 2. Añade una línea para ejecutar el script diariamente a las 9:00 AM:
+
    ```
    0 9 * * * cd /ruta/completa/al/proyecto && ./scraping/schedule_daily.py >> ./logs/cron.log 2>&1
    ```
 
 3. **IMPORTANTE**: Asegúrate de configurar la variable de entorno `FIREWORKS_API_KEY` en el archivo `~/.bashrc` o `~/.profile`:
+
    ```bash
    echo 'export FIREWORKS_API_KEY="tu-api-key"' >> ~/.bashrc
    source ~/.bashrc
@@ -90,6 +95,7 @@ Para configurar la ejecución automática en sistemas Linux o Mac, usaremos `cro
 #### En Windows (usando Programador de tareas)
 
 1. Crea un archivo batch (ej: `run_monitor.bat`) con el siguiente contenido:
+
    ```bat
    @echo off
    set FIREWORKS_API_KEY=tu-api-key
@@ -107,6 +113,7 @@ Para configurar la ejecución automática en sistemas Linux o Mac, usaremos `cro
 #### En Linux moderno (usando systemd)
 
 1. Crea un archivo de servicio en `/etc/systemd/system/monitoreo-electrico.service`:
+
    ```ini
    [Unit]
    Description=Monitoreo Diario de Afectaciones Eléctricas
@@ -124,6 +131,7 @@ Para configurar la ejecución automática en sistemas Linux o Mac, usaremos `cro
    ```
 
 2. Crea un temporizador en `/etc/systemd/system/monitoreo-electrico.timer`:
+
    ```ini
    [Unit]
    Description=Ejecutar Monitoreo Eléctrico Diariamente
@@ -137,6 +145,7 @@ Para configurar la ejecución automática en sistemas Linux o Mac, usaremos `cro
    ```
 
 3. Activa y habilita el temporizador:
+
    ```bash
    sudo systemctl enable monitoreo-electrico.timer
    sudo systemctl start monitoreo-electrico.timer
@@ -167,6 +176,7 @@ Actualiza el parámetro `model` al inicializar `DailyPipeline`.
 Para verificar que la ejecución automática funciona correctamente:
 
 1. Comprueba los archivos de log después del tiempo programado:
+
    ```bash
    cat logs/scheduler.log
    ```
@@ -175,4 +185,4 @@ Para verificar que la ejecución automática funciona correctamente:
 
 ## Licencia
 
-[MIT License](LICENSE) 
+[MIT License](LICENSE)
