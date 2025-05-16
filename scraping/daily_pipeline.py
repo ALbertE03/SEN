@@ -249,6 +249,70 @@ class DailyPipeline:
                         in title
                         or "UNE: Se pronostica una afectación de 390 MW en el horario pico"
                         in title
+                        or "UNE no prevé afectaciones en horario diurno y afectación de 210 MW en el pico este lunes"
+                        in title
+                        or "UNE: Pronostican afectación de 196 MW durante el horario pico nocturno"
+                        in title
+                        or "UNE pronostica una afectación de 320 MW en horario pico nocturno"
+                        in title
+                        or "Situación del SEN para el 12 de enero de 2024" in title
+                        or "Situación del SEN para este viernes 9 de febrero" in title
+                        or "Unión Eléctrica informa afectación de 750 MW para el horario pico nocturno"
+                        in title
+                        or "UNE: Se pronostica una afectación de 925 MW para el horario pico"
+                        in title
+                        or "UNE: Se pronostica una afectación de 884 MW en el horario pico"
+                        in title
+                        or "Unión Eléctrica informa afectación de 1280 MW en el horario pico nocturno"
+                        in title
+                        or "Pronostica Unión Eléctrica un déficit de 1416 MW en horario pico de este viernes"
+                        in title
+                        or "SEN prevé afectaciones en el servicio por déficit de capacidad de generación"
+                        in title
+                        or "Unión Eléctrica: Se pronostica una afectación de 1105 MW en el horario pico"
+                        in title
+                        or "UNE: Estiman afectación de 357 MW durante horario pico nocturno de este viernes"
+                        in title
+                        or "Unión Eléctrica informa afectación de 250 MW para el horario pico nocturno"
+                        in title
+                        or "UNE: no se pronostican para el horario pico afectaciones al servicio por déficit de capacidad de generación"
+                        in title
+                        or "UNE: No se pronostican afectaciones durante pico nocturno de este sábado"
+                        in title
+                        or "Unión Eléctrica: No se pronostican afectaciones al servicio este viernes"
+                        in title
+                        or "UNE no prevé afectaciones por déficit de generación eléctrica en horario pico"
+                        in title
+                        or "UNE: Se pronostica una afectación de 535 MW en el horario pico"
+                        in title
+                        or "UNE no pronostica afectaciones por déficit de generación este domingo"
+                        in title
+                        or "UNE no prevé afectaciones durante el pico nocturno de este lunes"
+                        in title
+                        or "Unión Eléctrica no prevé afectaciones durante el pico nocturno de este martes"
+                        in title
+                        or "UNE: Se pronostica una afectación de 355 MW durante horario pico nocturno de este viernes"
+                        in title
+                        or "Unión Eléctrica estima déficit de 337 MW en horario pico nocturno de este 26 de abril"
+                        in title
+                        or "Déficit de más de 1000 MW en horario pico nocturno de este jueves, informa la Unión Eléctrica"
+                        in title
+                        or "Se pronostica una afectación de 980 MW en el horario pico de este miércoles"
+                        in title
+                        or "Unión Eléctrica informa afectación de 530 MW para el horario pico nocturno"
+                        in title
+                        or "UNE: Se pronostica una afectación de 395 MW en el horario pico"
+                        in title
+                        or "Unión Eléctrica no pronostica afectaciones en horario diurno"
+                        in title
+                        or "Unión Eléctrica pronostica déficit de 312 MW en el horario pico nocturno"
+                        in title
+                        or "Termoeléctrica Antonio Guiteras sale de servicio por avería en la caldera: Déficit en horario pico nocturno sobrepasa los 900 MW"
+                        in title
+                        or "Se prevé alto déficit de generación para este viernes"
+                        in title
+                        or "Unión Eléctrica pronostica déficit de 545 MW para el pico nocturno de este domingo"
+                        in title
                     ):
                         logger.info(f"Artículo encontrado: {title}")
 
@@ -521,7 +585,7 @@ class DailyPipeline:
             url_llm="https://api.fireworks.ai/inference/v1/chat/completions",
             apikey=self.api_key,
             model=self.model,
-            a=2022,
+            a=2021,
             b=2025,
         )
         result = extractor.run_pipeline(

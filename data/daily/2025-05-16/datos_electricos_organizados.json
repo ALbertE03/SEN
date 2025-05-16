@@ -1,0 +1,3237 @@
+{
+  "2022": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2023": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2024": {
+    "enero": [
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/01/19/une-pronostican-afectacion-de-196-mw-durante-el-horario-pico-nocturno/",
+        "fecha": "2024-01-19 09:41:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2694,
+            "demanda_maxima": 2820,
+            "afectacion": 196,
+            "deficit": 126,
+            "respaldo": null,
+            "horario_pico": "horario pico nocturno"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2550,
+            "demanda": 1940,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Renté",
+                "unidad": 3,
+                "unidades": [
+                  3
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE de Felton",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [
+                  8
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 437,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": null,
+              "impacto_mw": null,
+              "causa": "déficit de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Patana de Melones",
+                "motores_afectados": 4,
+                "mw_afectados": 70,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 1.55,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 196,
+              "hora": "horario pico nocturno",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/01/15/une-no-preve-afectaciones-en-horario-diurno-y-afectacion-de-210-mw-en-el-pico-este-lunes/",
+        "fecha": "2024-01-15 10:04:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2640,
+            "demanda_maxima": 2780,
+            "afectacion": 210,
+            "deficit": 140,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2420,
+            "demanda": 1950,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Diez de Octubre",
+                "unidad": 5,
+                "unidades": [
+                  5
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE de Felton",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [
+                  8
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": 3,
+                "unidades": [
+                  3
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 396,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": null,
+              "impacto_mw": null,
+              "causa": "déficit de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": 7,
+                "mw_afectados": 115,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 1.35,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 124,
+              "hora": "18:30",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/01/12/situacion-del-sen-para-el-12-de-enero-de-2024/",
+        "fecha": "2024-01-12 09:56:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "11 de enero",
+          "prediccion": {
+            "disponibilidad": 2583,
+            "demanda_maxima": 2750,
+            "afectacion": 237,
+            "deficit": 167,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 2321,
+            "demanda": 1910,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Diez de Octubre",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": 3,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 312,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": null,
+              "impacto_mw": null,
+              "causa": "déficit de combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 58,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 96,
+              "hora": "18:30 horas",
+              "fecha": "11 de enero",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      }
+    ],
+    "febrero": [
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/02/23/une-se-pronostica-una-afectacion-de-884-mw-en-el-horario-pico/",
+        "fecha": "2024-02-23 09:10:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 1946,
+            "demanda_maxima": 2760,
+            "afectacion": 884,
+            "deficit": 814,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 1830,
+            "demanda": 1750,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 380,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 3,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 387,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 79,
+              "impacto_mw": 845,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": 83,
+              "unidades_afectadas": "12 centrales con bajas coberturas"
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              },
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 768,
+              "hora": "18:40",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/02/16/une-se-pronostica-una-afectacion-de-925-mw-para-el-horario-pico/",
+        "fecha": "2024-02-16 10:35:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 2045,
+            "demanda_maxima": 2900,
+            "afectacion": 925,
+            "deficit": 855,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 1900,
+            "demanda": 1980,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 500,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE de Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 3,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 409,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 75,
+              "impacto_mw": 980,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": 113,
+              "unidades_afectadas": "16 centrales con bajas coberturas"
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Mariel",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              },
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 827,
+              "hora": "18:40",
+              "fecha": "ayer",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/02/09/situacion-del-sen-para-este-viernes-9-de-febrero/",
+        "fecha": "2024-02-09 10:44:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 1945,
+            "demanda_maxima": 2800,
+            "afectacion": 925,
+            "deficit": 855,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 1780,
+            "demanda": 1650,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 350,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 6,
+                "unidades": [
+                  6
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 3,
+                "unidades": [
+                  3
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [
+                  8
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": 4,
+                "unidades": [
+                  4
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 6,
+                "unidades": [
+                  6
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 360,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": null,
+              "impacto_mw": null,
+              "causa": ""
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": 4,
+                "mw_afectados": 65,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 892,
+              "hora": "18:40",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/02/08/union-electrica-informa-afectacion-de-750-mw-para-el-horario-pico-nocturno/",
+        "fecha": "2024-02-08 09:24:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2070,
+            "demanda_maxima": 2750,
+            "afectacion": 750,
+            "deficit": 680,
+            "respaldo": null,
+            "horario_pico": "18:30 horas"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 1840,
+            "demanda": 1620,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 250,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 3,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Cienfuegos",
+                "unidad": 4,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 267,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": null,
+              "impacto_mw": null,
+              "causa": ""
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": 4,
+                "mw_afectados": 65,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 847,
+              "hora": "18:30 horas",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      }
+    ],
+    "marzo": [
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/03/29/une-estiman-afectacion-de-357-mw-durante-horario-pico-nocturno-de-este-viernes/",
+        "fecha": "2024-03-29 08:15:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "29 de marzo",
+          "prediccion": {
+            "disponibilidad": 2413,
+            "demanda_maxima": 2700,
+            "afectacion": 357,
+            "deficit": 287,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2100,
+            "demanda": 1900,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 100,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [
+                  1
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [
+                  8
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [
+                  6
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 444,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 74,
+              "impacto_mw": 880,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": 63,
+              "unidades_afectadas": "cinco centrales con bajas coberturas"
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Mariel",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              },
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 900,
+              "hora": "17:50",
+              "fecha": "día de ayer",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/03/12/union-electrica-se-pronostica-una-afectacion-de-1105-mw-en-el-horario-pico/",
+        "fecha": "2024-03-12 09:05:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 2165,
+            "demanda_maxima": 3200,
+            "afectacion": 1105,
+            "deficit": 1035,
+            "respaldo": null,
+            "horario_pico": "20:20 horas"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 2000,
+            "demanda": 2420,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 1100,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Carlos Manuel de Céspedes",
+                "unidad": 4,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Guiteras",
+                "unidad": null,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 356,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 82,
+              "impacto_mw": 615,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": 107,
+              "unidades_afectadas": "16 centrales"
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 24,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 1282,
+              "hora": "20:20 horas",
+              "fecha": "ayer",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/03/08/pronostica-union-electrica-un-deficit-de-1416-mw-en-horario-pico-de-este-viernes/",
+        "fecha": "2024-03-08 10:41:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "8 de marzo de 2024",
+          "prediccion": {
+            "disponibilidad": 1854,
+            "demanda_maxima": 3200,
+            "afectacion": 1416,
+            "deficit": 1346,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 1615,
+            "demanda": 2640,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 1300,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": null,
+                "unidades": [
+                  "1",
+                  "3"
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Carlos Manuel de Céspedes",
+                "unidad": null,
+                "unidades": [
+                  "4"
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": null,
+                "unidades": [
+                  "2"
+                ],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": null,
+                "unidades": [
+                  "8"
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Guiteras",
+                "unidad": null,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": null,
+                "unidades": [
+                  "6"
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 326,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 79,
+              "impacto_mw": 852,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 1367,
+              "hora": "18:00",
+              "fecha": "8 de marzo de 2024",
+              "nota": "no coincidente con la hora pico"
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/03/07/union-electrica-informa-afectacion-de-1280-mw-en-el-horario-pico-nocturno/",
+        "fecha": "2024-03-07 11:04:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 1940,
+            "demanda_maxima": 3150,
+            "afectacion": 1280,
+            "deficit": 1210,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 1750,
+            "demanda": 2400,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 980,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Carlos Manuel de Céspedes",
+                "unidad": 4,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Guiteras",
+                "unidad": null,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 317,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 83,
+              "impacto_mw": 810,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": 95,
+              "unidades_afectadas": "14 centrales"
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 1111,
+              "hora": "18:10",
+              "fecha": "",
+              "nota": "no coincidente con la hora pico"
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/03/05/sen-preve-afectaciones-en-el-servicio-por-deficit-de-capacidad-de-generacion/",
+        "fecha": "2024-03-05 09:21:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "lunes",
+          "prediccion": {
+            "disponibilidad": 2040,
+            "demanda_maxima": 3150,
+            "afectacion": 1180,
+            "deficit": 1110,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 1910,
+            "demanda": 2240,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 750,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 3,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Guiteras",
+                "unidad": null,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 322,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 101,
+              "impacto_mw": 877,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": 61,
+              "unidades_afectadas": "9 centrales con bajas coberturas"
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 1124,
+              "hora": "19:10",
+              "fecha": "lunes",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      }
+    ],
+    "abril": [
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/19/une-se-pronostica-una-afectacion-de-355-mw-durante-horario-pico-nocturno-de-este-viernes/",
+        "fecha": "2024-04-19 08:21:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "19 de abril",
+          "prediccion": {
+            "disponibilidad": 2315,
+            "demanda_maxima": 2600,
+            "afectacion": 355,
+            "deficit": 285,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2080,
+            "demanda": 2000,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 150,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 3,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Renté",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Mariel",
+                "unidad": null,
+                "unidades": [
+                  6,
+                  8
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 345,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 32,
+              "impacto_mw": 205,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 197,
+              "hora": "20:10",
+              "fecha": "19 de abril",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/16/union-electrica-no-preve-afectaciones-durante-el-pico-nocturno-de-este-martes/",
+        "fecha": "2024-04-16 09:57:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 2661,
+            "demanda_maxima": 2600,
+            "afectacion": null,
+            "deficit": null,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2478,
+            "demanda": 1900,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": null
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [
+                  1,
+                  6,
+                  8
+                ],
+                "tipo": null
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [
+                  6
+                ],
+                "tipo": null
+              },
+              {
+                "planta": "CTE Mariel",
+                "unidad": 6,
+                "unidades": [
+                  6,
+                  8
+                ],
+                "tipo": null
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 454,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 30,
+              "impacto_mw": 109,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": null
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": null
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": null,
+              "hora": null,
+              "fecha": null,
+              "nota": null
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/15/une-no-preve-afectaciones-durante-el-pico-nocturno-de-este-lunes/",
+        "fecha": "2024-04-15 09:14:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2664,
+            "demanda_maxima": 2600,
+            "afectacion": null,
+            "deficit": null,
+            "respaldo": "64 MW",
+            "horario_pico": "nocturno"
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 2480,
+            "demanda": 1880,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "Nuevitas",
+                "unidad": 6,
+                "unidades": [
+                  6,
+                  8
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "Mariel",
+                "unidad": null,
+                "unidades": [
+                  6,
+                  8
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 497,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 37,
+              "impacto_mw": 188,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": null,
+              "hora": "",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/14/une-no-pronostica-afectaciones-por-deficit-de-generacion-este-domingo/",
+        "fecha": "2024-04-14 09:01:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2685,
+            "demanda_maxima": 2550,
+            "afectacion": null,
+            "deficit": null,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2500,
+            "demanda": 1850,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [
+                  6,
+                  8
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Mariel",
+                "unidad": null,
+                "unidades": [
+                  6,
+                  8
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 502,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 38,
+              "impacto_mw": 172,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": 4,
+                "mw_afectados": 65,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": null,
+              "hora": "",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/11/une-se-pronostica-una-afectacion-de-535-mw-en-el-horario-pico/",
+        "fecha": "2024-04-11 08:31:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2315,
+            "demanda_maxima": 2780,
+            "afectacion": 535,
+            "deficit": 465,
+            "respaldo": null,
+            "horario_pico": "20:30 horas"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 2115,
+            "demanda": 2160,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 300,
+              "hora_estimada": "media"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Guiteras",
+                "unidad": null,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Mariel",
+                "unidad": 6,
+                "unidades": [
+                  8
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 367,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 55,
+              "impacto_mw": 397,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 600,
+              "hora": "20:30 horas",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/08/union-electrica-informa-afectacion-de-250-mw-para-el-horario-pico-nocturno/",
+        "fecha": "2024-04-08 09:09:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2470,
+            "demanda_maxima": 2650,
+            "afectacion": 250,
+            "deficit": 180,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2460,
+            "demanda": 1880,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Guiteras",
+                "unidad": null,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 551,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 35,
+              "impacto_mw": 138,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": 4,
+                "mw_afectados": 60,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 250,
+              "hora": "",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/07/une-no-se-pronostican-para-el-horario-pico-afectaciones-al-servicio-por-deficit-de-capacidad-de-generacion/",
+        "fecha": "2024-04-07 09:29:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2822,
+            "demanda_maxima": 2550,
+            "afectacion": null,
+            "deficit": null,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2440,
+            "demanda": 1700,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 597,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 40,
+              "impacto_mw": 162,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": 4,
+                "mw_afectados": 60,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              },
+              {
+                "patana_nombre": "Santiago",
+                "motores_afectados": 3,
+                "mw_afectados": 45,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": null,
+              "hora": "",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/06/une-no-se-pronostican-afectaciones-durante-pico-nocturno-de-este-sabado/",
+        "fecha": "2024-04-06 11:53:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2790,
+            "demanda_maxima": 2600,
+            "afectacion": null,
+            "deficit": null,
+            "respaldo": "190 MW",
+            "horario_pico": "hora pico nocturna"
+          },
+          "info_matutina": {
+            "hora": "7:00 a.m.",
+            "disponibilidad": 2528,
+            "demanda": 1900,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 481,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 42,
+              "impacto_mw": 265,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": 70,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              },
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": 4,
+                "mw_afectados": 60,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": null,
+              "hora": "",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/04/05/union-electrica-no-se-pronostican-afectaciones-al-servicio-este-viernes/",
+        "fecha": "2024-04-05 08:42:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 2655,
+            "demanda_maxima": 2600,
+            "afectacion": null,
+            "deficit": null,
+            "respaldo": null,
+            "horario_pico": "20:00 horas"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 2250,
+            "demanda": 1980,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 482,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 61,
+              "impacto_mw": 564,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Regla",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": 65,
+                  "horario": "",
+                  "estado": ""
+                }
+              },
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 3.52,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 149,
+              "hora": "20:00 horas",
+              "fecha": "ayer",
+              "nota": ""
+            },
+            "tendencia": "riesgo al estar operando el SEN con baja reserva"
+          }
+        }
+      }
+    ],
+    "mayo": [
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/05/15/se-pronostica-una-afectacion-de-980-mw-en-el-horario-pico-de-este-miercoles/",
+        "fecha": "2024-05-15 10:26:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 2340,
+            "demanda_maxima": 3250,
+            "afectacion": 980,
+            "deficit": 910,
+            "respaldo": null,
+            "horario_pico": "22:40 horas"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 1960,
+            "demanda": 2610,
+            "deficit": 650,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 850,
+              "hora_estimada": ""
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Mariel",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [
+                  1,
+                  3
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 3,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 313,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 35,
+              "impacto_mw": 274,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 24,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 1322,
+              "hora": "22:40 horas",
+              "fecha": "ayer",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/05/09/deficit-de-mas-de-1000-mw-en-horario-pico-nocturno-de-este-jueves-informa-la-union-electrica/",
+        "fecha": "2024-05-09 09:41:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "8 de Mayo",
+          "prediccion": {
+            "disponibilidad": 2210,
+            "demanda_maxima": 3150,
+            "afectacion": 1010,
+            "deficit": 940,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 1970,
+            "demanda": 2450,
+            "deficit": 500,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 750,
+              "hora_estimada": "horario diurno"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [
+                  1,
+                  3
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [
+                  6
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [
+                  8
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 1,
+                "unidades": [
+                  1
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 413,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 38,
+              "impacto_mw": 338,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": 24,
+            "continuidad_afectacion": "continua",
+            "maximo": {
+              "mw": 1268,
+              "hora": "20:50 horas",
+              "fecha": "día de ayer",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      }
+    ],
+    "junio": [
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/06/30/union-electrica-pronostica-deficit-de-545-mw-para-el-pico-nocturno-de-este-domingo/",
+        "fecha": "2024-06-30 09:26:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2475,
+            "demanda_maxima": 2950,
+            "afectacion": 545,
+            "deficit": 475,
+            "respaldo": null,
+            "horario_pico": ""
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2340,
+            "demanda": 2210,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 300,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Ernesto Guevara",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Lidio Ramón Pérez",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Máximo Gómez",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 467,
+              "tipo": ""
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 42,
+              "impacto_mw": 417,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": 9,
+                  "mw": 135,
+                  "horario": "pico",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 669,
+              "hora": "18:30",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/06/28/se-preve-alto-deficit-de-generacion-para-este-viernes/",
+        "fecha": "2024-06-28 08:22:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 2160,
+            "demanda_maxima": 3150,
+            "afectacion": 1060,
+            "deficit": 990,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 1980,
+            "demanda": 2350,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 850,
+              "hora_estimada": "horario del mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Guiteras",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Mariel",
+                "unidad": 8,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 416,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 52,
+              "impacto_mw": 435,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Regla",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": 50,
+                  "horario": "hora pico",
+                  "estado": ""
+                }
+              },
+              {
+                "patana_nombre": "Santiago de Cuba",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 1085,
+              "hora": "20:40 horas",
+              "fecha": "día de ayer",
+              "nota": "coincidente con la hora pico"
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/06/27/termoelectrica-antonio-guiteras-sale-de-servicio-por-averia-en-la-caldera-deficit-en-horario-pico-nocturno-sobrepasa-los-900-mw/",
+        "fecha": "2024-06-27 09:15:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "jueves 27 de junio",
+          "prediccion": {
+            "disponibilidad": 2010,
+            "demanda_maxima": 2900,
+            "afectacion": 960,
+            "deficit": 890,
+            "respaldo": null,
+            "horario_pico": "nocturno"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 2150,
+            "demanda": 2300,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 550,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Antonio Guiteras",
+                "unidad": null,
+                "unidades": [
+                  "caldera"
+                ],
+                "tipo": "avería"
+              },
+              {
+                "planta": "CTE Mariel",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": "avería"
+              },
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": "avería"
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": "avería"
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": "mantenimiento"
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 508,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 50,
+              "impacto_mw": 478,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Regla",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 960,
+              "hora": "hora pico nocturno",
+              "fecha": "jueves 27 de junio",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/06/23/union-electrica-no-pronostica-afectaciones-en-horario-diurno/",
+        "fecha": "2024-06-23 09:12:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "",
+          "prediccion": {
+            "disponibilidad": 2595,
+            "demanda_maxima": 2750,
+            "afectacion": 225,
+            "deficit": 155,
+            "respaldo": null,
+            "horario_pico": "19:00 horas"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 2400,
+            "demanda": 2020,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [
+                  2
+                ],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Renté",
+                "unidad": null,
+                "unidades": [
+                  3,
+                  6
+                ],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [
+                  1
+                ],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 404,
+              "tipo": "WW"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 39,
+              "impacto_mw": 170,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Regla",
+                "motores_afectados": null,
+                "mw_afectados": null,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 345,
+              "hora": "19:00 horas",
+              "fecha": "",
+              "nota": ""
+            },
+            "tendencia": ""
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/06/18/une-se-pronostica-una-afectacion-de-395-mw-en-el-horario-pico/",
+        "fecha": "2024-06-18 08:48:00",
+        "datos": {
+          "zonas_con_problemas": [],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 2475,
+            "demanda_maxima": 2800,
+            "afectacion": 395,
+            "deficit": 325,
+            "respaldo": null,
+            "horario_pico": "hora pico"
+          },
+          "info_matutina": {
+            "hora": "07:00",
+            "disponibilidad": 2300,
+            "demanda": 2185,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": null,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "Energas Boca de Jaruco",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 456,
+              "tipo": "WW"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 35,
+              "impacto_mw": 206,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": [
+              {
+                "patana_nombre": "Melones",
+                "motores_afectados": 4,
+                "mw_afectados": 65,
+                "recuperacion_estimada": {
+                  "motores": null,
+                  "mw": null,
+                  "horario": "",
+                  "estado": ""
+                }
+              }
+            ]
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 274,
+              "hora": "20:00",
+              "fecha": "ayer",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      },
+      {
+        "enlace": "http://www.cubadebate.cu/noticias/2024/06/10/union-electrica-informa-afectacion-de-530-mw-para-el-horario-pico-nocturno/",
+        "fecha": "2024-06-10 09:10:00",
+        "datos": {
+          "zonas_con_problemas": [
+            "zona centro oriental"
+          ],
+          "fecha_reporte": "ayer",
+          "prediccion": {
+            "disponibilidad": 2540,
+            "demanda_maxima": 3000,
+            "afectacion": 530,
+            "deficit": 460,
+            "respaldo": null,
+            "horario_pico": "21:00 horas"
+          },
+          "info_matutina": {
+            "hora": "07:00 horas",
+            "disponibilidad": 2340,
+            "demanda": 2230,
+            "deficit": null,
+            "proyeccion_mediodia": {
+              "afectacion_estimada": 450,
+              "hora_estimada": "mediodía"
+            }
+          },
+          "plantas": {
+            "averia": [
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 6,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Felton",
+                "unidad": 2,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "mantenimiento": [
+              {
+                "planta": "CTE Santa Cruz",
+                "unidad": 1,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Nuevitas",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              },
+              {
+                "planta": "CTE Rente",
+                "unidad": 5,
+                "unidades": [],
+                "tipo": ""
+              }
+            ],
+            "limitacion_termica": {
+              "mw_afectados": 330,
+              "tipo": "generación térmica"
+            }
+          },
+          "distribuida": {
+            "motores_con_problemas": {
+              "total": 40,
+              "impacto_mw": 249,
+              "causa": "combustible"
+            },
+            "problemas_lubricantes": {
+              "mw_afectados": null,
+              "unidades_afectadas": ""
+            },
+            "patanas_con_problemas": []
+          },
+          "paneles_solares": {
+            "cantidad_parques": null,
+            "produccion_mwh": null,
+            "nuevos_parques": null,
+            "capacidad_instalada": null,
+            "periodo_produccion": ""
+          },
+          "impacto": {
+            "horas_totales": null,
+            "continuidad_afectacion": null,
+            "maximo": {
+              "mw": 908,
+              "hora": "21:00 horas",
+              "fecha": "ayer",
+              "nota": ""
+            },
+            "tendencia": null
+          }
+        }
+      }
+    ],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  },
+  "2025": {
+    "enero": [],
+    "febrero": [],
+    "marzo": [],
+    "abril": [],
+    "mayo": [],
+    "junio": [],
+    "julio": [],
+    "agosto": [],
+    "septiembre": [],
+    "octubre": [],
+    "noviembre": [],
+    "diciembre": []
+  }
+}
