@@ -313,6 +313,134 @@ class DailyPipeline:
                         in title
                         or "Unión Eléctrica pronostica déficit de 545 MW para el pico nocturno de este domingo"
                         in title
+                        or "Unión Eléctrica pronostica una afectación de 98 MW en horario pico de este jueves"
+                        in title
+                        or "Unión Eléctrica no prevé afectaciones por generación en horario nocturno de hoy"
+                        in title
+                        or "La Unión Eléctrica no pronostica afectaciones al servicio por déficit de capacidad de generación este jueves"
+                        in title
+                        or "La Unión Eléctrica no pronostica afectaciones al servicio por déficit de capacidad de generación para este viernes"
+                        in title
+                        or "Unión Eléctrica no pronostica para este sábado afectaciones al servicio por déficit de capacidad de generación"
+                        in title
+                        or "Unión Eléctrica no pronostica afectaciones al servicio por déficit de capacidad de generación para este sábado"
+                        in title
+                        or "La Unión Eléctrica no estima afectaciones al servicio por déficit de capacidad de generación para este 1 de febrero"
+                        in title
+                        or "UNE no prevé afectaciones por déficit de capacidad de generación este sábado"
+                        in title
+                        or "Con una reserva de 369 MW, la Unión Eléctrica no pronostica afectaciones hoy por déficit de generación"
+                        in title
+                        or "Unión Eléctrica no pronostica afectación para este jueves"
+                        in title
+                        or "Unidad 1 de la CTE Felton entró al SEN y aportará 125 MW adicionales"
+                        in title
+                        or "UNE pronostica una afectación de 166 MW en horario pico de este sábado"
+                        in title
+                        or "Unión Eléctrica no pronostica afectaciones por déficit de generación para este viernes"
+                        in title
+                        or "UNE: No se pronostican afectaciones al servicio eléctrico por déficit de capacidad de generación"
+                        in title
+                        or "Unión Eléctrica no prevé afectaciones al servicio este domingo 19 de marzo"
+                        in title
+                        or "Unión Eléctrica no pronostica afectaciones por déficit de generación para este lunes"
+                        in title
+                        or "UNE no prevé afectaciones por déficit de capacidad de generación este martes"
+                        in title
+                        or "El servicio eléctrico en Cuba se mantiene estable sin afectaciones por déficit de generación"
+                        in title
+                        or "Unión Eléctrica: Se prevé afectación de 50 MW por déficit de capacidad de generación en el horario pico nocturno este jueves"
+                        in title
+                        or "Unión Eléctrica: Se estima que afectaciones no superarán los 65 MW por déficit de generación en horario pico nocturno de este viernes"
+                        in title
+                        or "Unión Eléctrica no pronostica afectaciones por déficit de generación este domingo"
+                        in title
+                        or "UNE no prevé afectaciones por déficit de capacidad de generación este lunes"
+                        in title
+                        or "UNE no prevé afectaciones por déficit de capacidad de generación este martes"
+                        in title
+                        or "UNE no pronostica afectaciones durante el pico nocturno de este miércoles"
+                        in title
+                        or "Unión Eléctrica no pronostica afectaciones por déficit de generación este jueves 30 de marzo"
+                        in title
+                        or "Unión Eléctrica informa afectación de 245 MW para el horario pico nocturno"
+                        in title
+                        or "UNE: Se prevé afectación en el servicio eléctrico durante el horario pico para esta jornada"
+                        in title
+                        or "Se mantendrán las afectaciones eléctricas durante todo el día, déficit de 471 MW en el pico nocturno"
+                        in title
+                        or "Se mantendrán las afectaciones eléctricas durante todo el día, déficit de 425 MW en el pico nocturno"
+                        in title
+                        or "Unión Eléctrica informa que son bajos los niveles de reserva por lo que pudiera afectarse el servicio eléctrico"
+                        in title
+                        or "Unión Eléctrica no prevé afectaciones por generación en horario nocturno de hoy"
+                        in title
+                        or "La Unión Eléctrica no pronostica afectaciones al servicio por déficit de capacidad de generación este jueves"
+                        in title
+                        or "La Unión Eléctrica no pronostica afectaciones al servicio por déficit de capacidad de generación para este viernes"
+                        in title
+                        or "Unión Eléctrica no pronostica para este sábado afectaciones al servicio por déficit de capacidad de generación"
+                        in title
+                        or "UNE no prevé afectaciones por déficit de capacidad de generación este domingo"
+                        in title
+                        or 'UNE estima una afectación de 1 070 MW durante el pico nocturno' in title
+                        or 'Unión Eléctrica pronostica afectación de 800 MW en el horario diurno y 1 266 MW en el pico nocturno'in title
+                        or 'Unión Eléctrica estima una afectación de 1 096 MW para el pico nocturno'in title
+                        or 'La Unión Eléctrica estima una afectación de 750 MW en el horario diurno y de 1148 MW para el pico nocturno' in title
+                        or 'La Unión Eléctrica pronostica una afectación de 1 158 MW para el horario pico nocturno' in title
+                        or 'UNE pronostica afectación de 1 129 MW durante horario pico nocturno de este jueves' in title
+                        or 'Unión Eléctrica estima un déficit de 789 MW para el pico nocturno' in title
+                        or 'Central Termoeléctrica Antonio Guiteras sincronizó al Sistema Eléctrico Nacional' in title
+                        or 'La Unión Eléctrica estima afectaciones de 700 MW en el horario diurno y de 928 MW en el pico nocturno' in title
+                        or 'Unión Eléctrica pronostica una afectación de 1 179 MW en el pico nocturno'in title
+                        or 'Unión Eléctrica estima una afectación de 1135 MW para el horario pico nocturno' in title
+                        or 'UNE estima una afectación de 1 009 MW durante el horario pico nocturno de este miércoles' in title
+                        or 'Unión Eléctrica prevé afectación de 950 MW en horario diurno y 1 230 MW en pico este miércoles' in title
+                        or 'Unión Eléctrica: Se estima una afectación de 1050 MW en el horario diurno' in title
+                        or 'Unión Eléctrica: Afectación de 1 050 MW en horario diurno y 1 329 MW en pico este lunes' in title
+                        or 'Unión Eléctrica pronostica una afectación de 1108 MW en horario pico' in title
+                        or 'La UNE estima una afectación de 750 MW durante el horario diurno de este viernes' in title
+                        or 'Unión Eléctrica prevé una afectación máxima de 1257 MW en el horario pico nocturno'    in title
+                        or 'Unión Eléctrica pronostica alto déficit en capacidad de generación: Una afectación de 1 256 MW en horario pico' in title
+                        or 'Unión Eléctrica continúa proceso para restablecer el Sistema Electroenergético Nacional' in title
+                        or 'UNE: Se trabaja en la interconexión del sistema electroenergético nacional' in title
+                        or 'Unión Eléctrica pronostica una afectación de 409 MW en el horario pico' in title
+                        or 'Se mantiene el alto déficit en capacidad de generación: Unión Eléctrica estima una afectación de 828 MW en horario pico' in title
+                        or 'La Unión Eléctrica estima una afectación de 732 MW para el horario pico' in title
+                        or 'Unión Eléctrica estima una afectación máxima de 650 MW en el horario diurno' in title
+                        or 'La Unión Eléctrica estima una afectación máxima de 650 MW en el horario diurno' in title
+                        or 'Unión Eléctrica pronostica afectaciones al servicio por déficit en capacidad de generación' in title
+                        or 'Unión Eléctrica informa que se estima afectación de 1084 MW en el horario pico' in title
+                        or 'Unión Eléctrica: Se estima una afectación máxima de 850 MW en el horario diurno' in title
+                        or 'Unión Eléctrica prevé afectaciones al servicio por déficit en capacidad de generación' in title
+                        or 'Unión Eléctrica estima una afectación máxima de 650 MW durante el horario diurno de este jueves' in title
+                        or 'La Unión Eléctrica pronostica una afectación máxima de 500 MW' in title
+                        or 'Unión Eléctrica pronostica afectaciones por déficit de capacidad de generación, en esta jornada' in title
+                        or 'Unión Eléctrica pronostica afectación máxima de 550 MW' in title
+                        or 'Unión Eléctrica pronostica afectaciones al servicio durante todo el lunes' in title
+                        or 'Unión Eléctrica mantiene pronóstico de afectaciones al servicio este domingo' in title
+                        or 'La Unión Eléctrica pronostica una afectación de 412 MW durante el horario pico de este sábado' in title
+                        or 'La UNE pronostica una afectación de 653 MW para el horario pico' in title
+                        or 'Unión Eléctrica estima una afectación máxima de 680 MW en el horario diurno' in title
+                        or 'Unión Eléctrica estima una afectación de 571 MW para el horario pico de este miércoles' in title
+                        or 'Unión Eléctrica prevé afectaciones durante el día y el horario pico de este martes' in title
+                        or 'Unión Eléctrica pronostica una afectación de 540 MW al horario pico'    in title
+                        or 'Unión Eléctrica pronostica afectaciones al servicio durante todo el domingo' in title
+                        or 'La Unión Eléctrica prevé afectaciones al servicio en el horario diurno' in title
+                        or 'La Unión Eléctrica pronostica una afectación de 119 MW para el horario pico' in title
+                        or 'La Unión Eléctrica pronostica una afectación de 313 MW para el horario pico'in title
+                        or 'Unión Eléctrica informa sobre afectaciones en el servicio este miércoles' in title
+                        or 'La Unión Eléctrica estima una afectación de 551MW para el horario pico' in title
+                        or 'Unión Eléctrica estima una afectación al servicio de 298 MW en horario pico' in title
+                        or 'Unión Eléctrica prevé disponibilidad por encima de demanda este domingo' in title
+                        or 'Unión Eléctrica: No se pronostican afectaciones al servicio en el horario pico' in title
+                        or 'Unión Eléctrica pronostica afectaciones al servicio por déficit en capacidad de generación' in title
+                        or 'Unión Eléctrica: De mantenerse las condiciones actuales no se pronostican afectaciones durante el día' in title
+                        or 'Unión Eléctrica: Se prevén afectaciones al servicio por déficit en generación' in title
+                        or 'Unión Eléctrica estima una afectación de 450 MW durante el día' in title
+                        or 'Unión Eléctrica pronostica una reserva de 195 MW en horario pico' in title
+                        or 'La UNE informa sobre riesgo de afectaciones durante el horario pico de este sábado' in title
+                        or 'Unión eléctrica estima una afectación de 180 MW en el horario pico de este viernes' in title
                     ):
                         logger.info(f"Artículo encontrado: {title}")
 
