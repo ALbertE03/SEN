@@ -2,10 +2,9 @@ import streamlit as st
 import sys
 import os
 
-# Agregar el directorio de visualización al path para importar las aplicaciones
+# Agregar el directorio raíz al path para importar las aplicaciones
 current_dir = os.path.dirname(os.path.abspath(__file__))
-visualizacion_dir = os.path.join(current_dir, "Visualizacion")
-sys.path.append(visualizacion_dir)
+sys.path.append(current_dir)
 
 # Importar las aplicaciones específicas
 from Visualizacion.app import main as run_main_app
