@@ -32,6 +32,25 @@ if os.path.exists(vis_dir):
     menu = st.sidebar.radio("Menu:", ["Inicio", "Déficit", "Disponibilidad", "Comparativas"])
     
     try:
+        # Verificar dependencias importantes antes de continuar
+        try:
+            import pandas as pd
+            st.sidebar.success("✓ pandas instalado correctamente")
+            
+            # Verificar plotly para evitar errores en módulos que lo usan
+            try:
+                import plotly.express as px
+                import plotly.graph_objects as go
+                st.sidebar.success("✓ plotly instalado correctamente")
+            except ImportError:
+                st.sidebar.error("❌ Error: plotly no está instalado")
+                st.error("Falta la dependencia plotly. Por favor actualiza requirements.txt con 'plotly>=5.18.0' y 'plotly-express>=0.4.1'")
+                raise ImportError("Módulo plotly no encontrado")
+                
+        except ImportError as e:
+            st.sidebar.error(f"❌ Error de dependencia: {str(e)}")
+            raise
+        
         # Configurar paths
         if vis_dir not in sys.path:
             sys.path.insert(0, current_dir)
