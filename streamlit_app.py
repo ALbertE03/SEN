@@ -2,11 +2,11 @@ import streamlit as st
 import sys
 import os
 
-# Agregar el directorio raíz al path para importar las aplicaciones
+# Configuración de rutas para importaciones
 current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(current_dir)
+sys.path.insert(0, current_dir)
 
-# Importar las aplicaciones específicas
+# Importar el módulo app directamente
 from Visualizacion.app import main as run_main_app
 
 # Ejecutar la aplicación principal

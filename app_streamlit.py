@@ -1,9 +1,6 @@
 import streamlit as st
-# Usar importaciones relativas desde el mismo directorio
-from .Inicio import app as inicio_app
-from .Deficit import app as deficit_app
-from .Disponibilidad import app as disponibilidad_app
-from .comparativas import app as comparativas_app
+import sys
+import os
 
 # Configuración de la página
 st.set_page_config(
@@ -13,6 +10,15 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Importamos los componentes directamente (sin usar estructura de paquetes)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+# Importaciones directas
+from Visualizacion.Inicio import app as inicio_app
+from Visualizacion.Deficit import app as deficit_app
+from Visualizacion.Disponibilidad import app as disponibilidad_app
+from Visualizacion.comparativas import app as comparativas_app
+
 # Función principal
 def main():
     # Barra lateral con menú de navegación
@@ -20,7 +26,8 @@ def main():
     st.sidebar.markdown("---")
     # Opciones de navegación
     menu = st.sidebar.radio("Menu:", ["Inicio", "Déficit", "Disponibilidad", "Comparativas"])
-      # Mostrar la página seleccionada
+    
+    # Mostrar la página seleccionada
     if menu == "Inicio":
         inicio_app()
     elif menu == "Déficit":
@@ -32,4 +39,6 @@ def main():
 
 # Ejecutar la aplicación
 if __name__ == "__main__":
+    main()
+else:
     main()
