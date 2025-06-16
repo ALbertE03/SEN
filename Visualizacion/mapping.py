@@ -61,19 +61,33 @@ def format_info_matutina(info):
         lines.append("- Proyección mediodía: No se reportaron datos")
     return lines
 
+from plant_standardizer import get_canonical_plant_name
+
 def format_plantas(plantas):
     lines = []
     averias = plantas.get('averia', [])
     mant = plantas.get('mantenimiento', [])
     term = plantas.get('limitacion_termica', {})
     if averias:
-        names = [p.get('planta') for p in averias if p.get('planta')]
-        lines.append(f"Plantas con avería: {', '.join(names)}")
+        # Apply name standardization
+        names = [get_canonical_plant_name(p.get('planta')) for p in averias if p.get('planta')]
+        # Filter out None values and remove duplicates but preserve order
+        unique_names = []
+        for name in names:
+            if name and name not in unique_names:
+                unique_names.append(name)
+        lines.append(f"Plantas con avería: {', '.join(unique_names)}" if unique_names else "Plantas con avería: No se reportaron datos")
     else:
         lines.append("Plantas con avería: No se reportaron datos")
     if mant:
-        names = [p.get('planta') for p in mant if p.get('planta')]
-        lines.append(f"Plantas en mantenimiento: {', '.join(names)}")
+        # Apply name standardization
+        names = [get_canonical_plant_name(p.get('planta')) for p in mant if p.get('planta')]
+        # Filter out None values and remove duplicates but preserve order
+        unique_names = []
+        for name in names:
+            if name and name not in unique_names:
+                unique_names.append(name)
+        lines.append(f"Plantas en mantenimiento: {', '.join(unique_names)}" if unique_names else "Plantas en mantenimiento: No se reportaron datos")
     else:
         lines.append("Plantas en mantenimiento: No se reportaron datos")
     if term.get('mw_afectados') is not None:

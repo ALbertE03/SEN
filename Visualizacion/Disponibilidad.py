@@ -80,12 +80,14 @@ def contar_dias_operativos(entradas, plantas, sel_anos, inicio, fin):
     return cont
 
 def app():
+    st.header("Datos Históricos de Disponibilidad")
+    st.markdown("---")
     entradas = cargar_datos()
     df = preparar_dataframe(entradas)
     df_solar_gen, df_solar_cnt = preparar_datos_solares(entradas)
     plantas = obtener_plantas(entradas)
 
-    with st.expander("Disponibilidad: Comparativa y Analisis", expanded=True):
+    with st.expander("Comparativa y Análisis", expanded=True):
         anos = sorted(df.index.year.unique())
         sel_anos = st.multiselect("Seleccione anos", [str(a) for a in anos], default=[str(anos[-1])])
         inicio, fin = st.slider(

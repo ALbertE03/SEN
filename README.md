@@ -9,6 +9,32 @@ Este sistema automatiza la extracción de información sobre afectaciones eléct
 - **Almacenamiento organizado** por año/mes
 - **Evita duplicados** mediante control de URLs ya procesadas
 - **Registros detallados** del proceso completo
+- **Visualización interactiva** con Streamlit
+
+## Visualización de Datos
+
+Se ha implementado un panel de visualización interactivo utilizando Streamlit que permite:
+
+1. **Inicio**: Visualización de los datos del último día disponible en forma de tabla
+2. **Déficit**: Análisis y visualización de datos históricos de déficit eléctrico
+3. **Disponibilidad**: Análisis y visualización de datos históricos de disponibilidad eléctrica
+4. **Comparativas**: Visualizaciones comparativas entre déficit y disponibilidad
+
+## Ejecución de la Aplicación
+
+Para ejecutar la aplicación de visualización:
+
+1. Instalar las dependencias:
+```bash
+pip install -r requirements.txt
+```
+
+2. Ejecutar la aplicación:
+```bash
+streamlit run Visualizacion/app.py
+```
+
+3. La aplicación estará disponible en el navegador en `http://localhost:8501`
 
 ## Estructura del Proyecto
 
@@ -18,6 +44,15 @@ Este sistema automatiza la extracción de información sobre afectaciones eléct
 │   ├── daily/                   # Datos organizados por día
 │   ├── processed/               # Datos procesados (JSON estructurado)
 │   └── raw/                     # Datos crudos (artículos, CSV)
+├── scraping/                    # Código de scraping de artículos
+├── Visualizacion/               # Aplicación de visualización con Streamlit
+│   ├── app.py                   # Punto de entrada de la aplicación
+│   ├── Deficit.py               # Módulo de análisis de déficit
+│   ├── Disponibilidad.py        # Módulo de análisis de disponibilidad
+│   └── mapping.py               # Funciones de mapeo de datos
+├── extract_json.py              # Script de extracción JSON con LLM
+├── requirements.txt             # Dependencias del proyecto
+└── README.md                    # Documentación
 ├── logs/                        # Logs del sistema
 ├── scraping/                    # Scripts de scraping
 │   ├── __init__.py              # Inicialización del módulo
