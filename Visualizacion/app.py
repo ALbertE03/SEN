@@ -1,6 +1,6 @@
 import streamlit as st
 # Usar importaciones relativas desde el mismo directorio
-from .Inicio import app as inicio_app
+from .inicio import app as inicio_app
 from .Deficit import app as deficit_app
 from .Disponibilidad import app as disponibilidad_app
 from .comparativas import app as comparativas_app
