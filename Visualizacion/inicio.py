@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-from utils import cargar_datos, preparar_dataframe_basico
+from .utils import cargar_datos, preparar_dataframe_basico
 
 def app():
     st.header("Reporte Diario")

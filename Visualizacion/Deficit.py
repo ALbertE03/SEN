@@ -4,13 +4,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from datetime import datetime, timedelta
-from utils import (
+from .utils import (
     cargar_datos,
     preparar_dataframe_basico,
     obtener_plantas,
     datos_estado_plantas
 )
-import mapping
+from . import mapping
 
 def preparar_dataframe_deficit(entradas):
     """

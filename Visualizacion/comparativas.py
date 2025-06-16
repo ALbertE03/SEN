@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from datetime import datetime, date
-from utils import (
+from .utils import (
     cargar_datos, 
     preparar_dataframe_basico, 
     obtener_plantas,
