@@ -19,9 +19,8 @@ def main():
     st.sidebar.markdown("---")
     # Opciones de navegación
     menu = st.sidebar.radio("Menu:", ["Inicio", "Déficit", "Disponibilidad", "Comparativas"])
-    
-    # Mostrar la página seleccionada
-    if menu == "Reporte Diario":
+      # Mostrar la página seleccionada
+    if menu == "Inicio":
         inicio_app()
     elif menu == "Déficit":
         deficit_app()

@@ -1,32 +1,8 @@
 import streamlit as st
-import json
-import os
 import pandas as pd
 import altair as alt
 from datetime import datetime, date
-
-def DIAS_REPETIDOS(entradas):
-    vistos = set()
-    unicas = []
-    for e in entradas:
-        d = e["fecha"].date()
-        if d not in vistos:
-            vistos.add(d)
-            unicas.append(e)
-    return unicas
-
-def cargar_datos():
-    base_dir = os.path.dirname(__file__)
-    ruta = os.path.join(base_dir, os.pardir, "data", "processed", "datos_electricos_organizados.json")
-    with open(ruta, "r", encoding="utf-8") as f:
-        raw = json.load(f)
-    entradas = []
-    for anio in raw:
-        for mes in raw[anio]:
-            for rec in raw[anio][mes]:
-                dt = datetime.fromisoformat(rec["fecha"])
-                entradas.append({"fecha": dt, "datos": rec["datos"]})
-    return DIAS_REPETIDOS(entradas)
+from utils import cargar_datos
 
 def preparar_dataframe(entradas):
     filas = []
