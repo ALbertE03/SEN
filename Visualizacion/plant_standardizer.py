@@ -1,9 +1,9 @@
 """
-Módulo para la estandarización de nombres de plantas termoeléctricas en el Sistema Eléctrico Nacional de Cuba.
+Módulo para la estandarización de nombres de plantas termoeléctricas del Sistema Eléctrico Nacional.
 
-Este módulo proporciona funciones para normalizar los diferentes nombres que se utilizan
-para referirse a las mismas centrales termoeléctricas, evitando así duplicados y facilitando
-el análisis de datos.
+Este módulo contiene el mapeo manual y las funciones de normalización para asegurar
+que los diferentes nombres utilizados para la misma planta termoeléctrica
+sean estandarizados a un nombre canónico único.
 """
 
 # Grupos de plantas termoeléctricas principales con sus variaciones de nombres
