@@ -2,8 +2,8 @@ name: Daily Data Update
 
 on:
   schedule:
-    # Ejecutar todos los días a las 9:00 AM (UTC, ajustar según zona horaria)
-    - cron: '0 9 * * *'
+    # Ejecutar todos los días a las 9:00 AM hora de Cuba (UTC-4/UTC-5)
+    - cron: '0 13 * * *'  # 9:00 AM Cuba = 13:00 UTC (horario estándar en Cuba)
   workflow_dispatch:  # Permitir ejecución manual
 
 jobs:
