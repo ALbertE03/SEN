@@ -20,9 +20,11 @@ Se ha implementado un panel de visualización interactivo utilizando Streamlit q
 3. **Disponibilidad**: Análisis y visualización de datos históricos de disponibilidad eléctrica
 4. **Comparativas**: Visualizaciones comparativas entre déficit y disponibilidad
 
-## Ejecución de la Aplicación
+## Ejecución y Despliegue
 
-Para ejecutar la aplicación de visualización:
+### Ejecución Local
+
+Para ejecutar la aplicación de visualización localmente:
 
 1. Instalar las dependencias:
 ```bash
@@ -31,10 +33,33 @@ pip install -r requirements.txt
 
 2. Ejecutar la aplicación:
 ```bash
-streamlit run Visualizacion/app.py
+streamlit run streamlit_app.py
 ```
 
 3. La aplicación estará disponible en el navegador en `http://localhost:8501`
+
+### Despliegue en Streamlit Cloud
+
+Esta aplicación está optimizada para ser desplegada en [Streamlit Cloud](https://streamlit.io/cloud), siguiendo estos pasos:
+
+1. Crear una cuenta en Streamlit Cloud (si no tienes una)
+2. Conectar tu repositorio de GitHub con Streamlit Cloud
+3. Especificar `streamlit_app.py` como archivo principal
+4. No se requiere configuración adicional, Streamlit Cloud detectará automáticamente la aplicación
+
+### Actualizaciones Automáticas de Datos
+
+Para mantener los datos actualizados automáticamente cada día a las 9 AM:
+
+1. El repositorio incluye un workflow de GitHub Actions configurado en `.github/workflows/daily_update.yml`
+2. Este workflow ejecuta el scraper diariamente a las 9 AM, extrae datos nuevos y actualiza el repositorio
+3. Cuando se actualizan los datos en el repositorio, Streamlit Cloud los reflejará automáticamente
+
+#### Configuración Necesaria para Actualizaciones Automáticas
+
+1. En GitHub, ve a tu repositorio → Settings → Secrets and variables → Actions
+2. Agrega un nuevo secreto con nombre `FIREWORKS_API_KEY` y el valor de tu API key de Fireworks AI
+3. Activa GitHub Actions en tu repositorio (Settings → Actions → General)
 
 ## Estructura del Proyecto
 

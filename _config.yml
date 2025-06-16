@@ -1,0 +1,16 @@
+theme: jekyll-theme-minimal
+title: Sistema de Monitoreo Diario de Afectaciones Eléctricas
+description: Monitoreo y visualización de datos sobre afectaciones eléctricas
+baseurl: ""
+url: ""
+
+# Excluir archivos y directorios
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - logs/
