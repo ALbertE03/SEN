@@ -11,51 +11,37 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Verificar estructura de directorios
+# Directorio principal
 current_dir = os.path.dirname(os.path.abspath(__file__))
 st.sidebar.title("SENtinel")
 st.sidebar.markdown("---")
 
-# Listar el directorio Visualizacion para diagnóstico
+# Verificar directorio de visualizaciones
 vis_dir = os.path.join(current_dir, "Visualizacion")
 if os.path.exists(vis_dir):
     files = os.listdir(vis_dir)
     
-    # Verificar nombres de archivos
+    # Buscar archivo de inicio (puede ser Inicio.py o inicio.py)
     inicio_file = None
     for file in files:
         if file.lower() == "inicio.py":
             inicio_file = file
             break
     
-    # Definir las opciones del menú
+    # Menú principal
     menu = st.sidebar.radio("Menu:", ["Inicio", "Déficit", "Disponibilidad", "Comparativas"])
     
     try:
-        # Verificar dependencias importantes antes de continuar
-        try:
-            import pandas as pd
-            st.sidebar.success("✓ pandas instalado correctamente")
-            
-            # Verificar plotly para evitar errores en módulos que lo usan
-            try:
-                import plotly.express as px
-                import plotly.graph_objects as go
-                st.sidebar.success("✓ plotly instalado correctamente")
-            except ImportError:
-                st.sidebar.error("❌ Error: plotly no está instalado")
-                st.error("Falta la dependencia plotly. Por favor actualiza requirements.txt con 'plotly>=5.18.0' y 'plotly-express>=0.4.1'")
-                raise ImportError("Módulo plotly no encontrado")
-                
-        except ImportError as e:
-            st.sidebar.error(f"❌ Error de dependencia: {str(e)}")
-            raise
+        # Importar dependencias necesarias
+        import pandas as pd
+        import plotly.express as px
+        import plotly.graph_objects as go
         
         # Configurar paths
         if vis_dir not in sys.path:
             sys.path.insert(0, current_dir)
         
-        # Importar módulos de forma dinámica según los archivos disponibles
+        # Cargar el módulo correspondiente según la selección del menú
         if menu == "Inicio" and inicio_file:
             module_name = f"Visualizacion.{inicio_file[:-3]}"  # Quitar .py
             inicio_module = importlib.import_module(module_name)
@@ -72,23 +58,9 @@ if os.path.exists(vis_dir):
         else:
             st.error(f"No se encontró el módulo para {menu}")
             st.write(f"Archivos disponibles: {files}")
-    
     except Exception as e:
         st.error(f"Error al cargar módulos: {str(e)}")
-        st.write("Archivos disponibles en Visualizacion:")
-        st.write(files)
-        
-        # Mostrar información de diagnóstico
-        st.write("Detalles del sistema:")
-        st.write(f"Directorio actual: {current_dir}")
-        st.write(f"Python path: {sys.path}")
-        
-        # Intentar importar un módulo simple para prueba
-        try:
-            import pandas as pd
-            st.success("pandas se importó correctamente")
-        except:
-            st.error("Problema importando pandas")
+        st.info("Compruebe que todas las dependencias están instaladas y que la estructura del proyecto es correcta.")
 else:
     st.error(f"El directorio {vis_dir} no existe. Verifique la estructura del repositorio.")
     st.write(f"Contenido del directorio {current_dir}:")

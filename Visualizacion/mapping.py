@@ -61,7 +61,7 @@ def format_info_matutina(info):
         lines.append("- Proyección mediodía: No se reportaron datos")
     return lines
 
-from plant_standardizer import get_canonical_plant_name
+from .plant_standardizer import get_canonical_plant_name
 
 def format_plantas(plantas):
     lines = []

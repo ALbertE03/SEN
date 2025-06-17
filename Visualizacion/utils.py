@@ -62,7 +62,7 @@ def preparar_datos_solares(entradas):
     return pd.DataFrame(filas).set_index("fecha").sort_index()
 
 # Importar el estandarizador de nombres de plantas
-from plant_standardizer import get_canonical_plant_name
+from .plant_standardizer import get_canonical_plant_name
 
 # Obtener lista de plantas
 def obtener_plantas(entradas):
