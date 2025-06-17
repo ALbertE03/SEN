@@ -27,17 +27,38 @@ def preparar_dataframe_deficit(entradas):
         info_matutina = e["datos"].get("info_matutina", {})
         impacto = e["datos"].get("impacto", {})
         
-        # Calcular el porcentaje del déficit respecto a la demanda
+        # Calcular el déficit correctamente: si está en predicción usamos ese valor,
+        # si no, intentamos calcularlo como (demanda - disponibilidad)
         deficit = pred.get("deficit")
         demanda = pred.get("demanda_maxima")
+        disponibilidad = pred.get("disponibilidad")
+        
+        # Si el déficit no está directamente reportado, calcularlo
+        if deficit is None and demanda is not None and disponibilidad is not None:
+            if demanda > disponibilidad:
+                deficit = demanda - disponibilidad
+            else:
+                deficit = 0
+        
         porcentaje_deficit = ((deficit / demanda) * 100) if deficit is not None and demanda and demanda > 0 else None
         
         # Obtener el máximo impacto reportado
         maximo_impacto = impacto.get("maximo", {}).get("mw") if impacto else None
         
-        # Contar plantas en avería
+        # Contar plantas en avería usando los nombres estandarizados
         plantas_averia = e["datos"].get("plantas", {}).get("averia", [])
-        cant_plantas_averia = len([p for p in plantas_averia if p.get("planta")])
+        # Usamos set para evitar plantas duplicadas debido a estandarización
+        plantas_estandarizadas = set()
+        from .plant_standardizer import get_canonical_plant_name
+        
+        for p in plantas_averia:
+            planta_nombre = p.get("planta")
+            if planta_nombre:
+                nombre_canonico = get_canonical_plant_name(planta_nombre)
+                if nombre_canonico:  # Solo añadir si es un nombre válido
+                    plantas_estandarizadas.add(nombre_canonico)
+        
+        cant_plantas_averia = len(plantas_estandarizadas)
         
         # Motores fuera de servicio
         motores_con_problemas = e["datos"].get("distribuida", {}).get("motores_con_problemas", {})
@@ -46,7 +67,7 @@ def preparar_dataframe_deficit(entradas):
         filas.append({
             "fecha": e["fecha"],
             "afectacion": pred.get("afectacion"),
-            "disponibilidad": pred.get("disponibilidad"),
+            "disponibilidad": disponibilidad,
             "demanda": demanda,
             "deficit": deficit,
             "porcentaje_deficit": porcentaje_deficit,
@@ -158,16 +179,24 @@ def analizar_plantas_deficit(entradas, df):
     """
     st.subheader("Análisis de Plantas en Avería y su Impacto en el Déficit")
     
-    # Extraer datos de plantas en avería por fecha
+    # Extraer datos de plantas en avería por fecha usando plant_standardizer
     datos_plantas = {}  # Estructura: {fecha: [plantas en avería]}
+    from .plant_standardizer import get_canonical_plant_name, get_valid_plant_names
     
     for entrada in entradas:
         fecha = entrada["fecha"]
         plantas_averia = entrada["datos"].get("plantas", {}).get("averia", [])
-        planta_nombres = [p.get("planta", "Desconocida") for p in plantas_averia if p.get("planta")]
+        plantas_estandarizadas = set()
         
-        if planta_nombres:  # Solo agregar si hay plantas en avería
-            datos_plantas[fecha] = planta_nombres
+        for p in plantas_averia:
+            planta_nombre = p.get("planta")
+            if planta_nombre:
+                nombre_canonico = get_canonical_plant_name(planta_nombre)
+                if nombre_canonico:  # Solo añadir si es un nombre válido
+                    plantas_estandarizadas.add(nombre_canonico)
+        
+        if plantas_estandarizadas:  # Solo agregar si hay plantas en avería
+            datos_plantas[fecha] = list(plantas_estandarizadas)
     
     if not datos_plantas:
         st.info("No hay datos de plantas en avería disponibles.")
@@ -194,8 +223,9 @@ def analizar_plantas_deficit(entradas, df):
         }).set_index("planta")
         
         # Selección de planta específica para análisis
-        todas_plantas = ["Todas las plantas"] + sorted(df_plantas["planta"].unique().tolist())
-        planta_seleccionada = st.selectbox("Seleccionar planta para análisis", todas_plantas)
+        # Solo incluir plantas termoeléctricas válidas
+        valid_plants = ["Todas las plantas"] + sorted(set(df_plantas["planta"].unique()) & set(get_valid_plant_names()))
+        planta_seleccionada = st.selectbox("Seleccionar planta para análisis", valid_plants)
         
         # Si se seleccionó una planta específica, filtrar los datos
         if planta_seleccionada != "Todas las plantas":
@@ -221,7 +251,7 @@ def analizar_plantas_deficit(entradas, df):
                     
                     st.metric(
                         label=f"Déficit promedio cuando {planta_seleccionada} está en avería",
-                        value=f"{int(deficit_promedio_planta)} MW"
+                        value=f"{int(deficit_promedio_planta)} MW" if not pd.isna(deficit_promedio_planta) else "N/D"
                     )
                 
                 with col2:
@@ -233,8 +263,8 @@ def analizar_plantas_deficit(entradas, df):
                     
                     st.metric(
                         label=f"Diferencia vs. déficit promedio general",
-                        value=f"{int(diferencia)} MW",
-                        delta=f"{int(diferencia)}",
+                        value=f"{int(diferencia)} MW" if not pd.isna(diferencia) else "N/D",
+                        delta=f"{int(diferencia)}" if not pd.isna(diferencia) else None,
                         delta_color="inverse" if diferencia > 0 else "normal"
                     )
                 
@@ -273,17 +303,20 @@ def analizar_plantas_deficit(entradas, df):
         
         # Mostrar visualización según selección
         if not df_freq.empty:
+            # Filtrar para mostrar solo plantas termoeléctricas válidas
+            df_freq_filtrado = df_freq[df_freq.index.isin(get_valid_plant_names())]
+            
             if vista_seleccionada == "Tabla de frecuencias":
                 st.write("Frecuencia de averías por planta:")
                 try:
-                    st.dataframe(df_freq.style.background_gradient(cmap='YlOrRd'))
+                    st.dataframe(df_freq_filtrado.style.background_gradient(cmap='YlOrRd'))
                 except Exception as e:
                     st.error(f"Error al mostrar tabla con formato: {str(e)}")
                     # Mostrar tabla sin formato como fallback
-                    st.dataframe(df_freq)
+                    st.dataframe(df_freq_filtrado)
             else:
                 # Preparar datos para gráfico
-                df_graph = df_freq.reset_index().sort_values('días_en_avería', ascending=True).tail(10)
+                df_graph = df_freq_filtrado.reset_index().sort_values('días_en_avería', ascending=True).tail(10)
                 fig = px.bar(
                     df_graph,
                     x='días_en_avería',
@@ -529,6 +562,11 @@ def app():
     # Cargar datos
     entradas = cargar_datos()
     
+    # Verificar que se cargaron los datos correctamente
+    if not entradas:
+        st.error("No se pudieron cargar los datos. Verifique la ruta de los archivos.")
+        return
+    
     # Preparar dataframe específico para análisis de déficit
     df_completo = preparar_dataframe_deficit(entradas)
     
@@ -578,8 +616,11 @@ def app():
     # Mostrar gráfico principal de déficit con línea de media
     st.write("### Déficit energético en el período seleccionado")
     
+    # Filtrar valores nulos para cálculos
+    df_deficit_no_nulo = df[df["deficit"].notnull()]
+    
     # Calcular la media del déficit
-    deficit_medio = df['deficit'].mean()
+    deficit_medio = df_deficit_no_nulo['deficit'].mean() if not df_deficit_no_nulo.empty else 0
     
     # Crear gráfico
     fig = go.Figure()
