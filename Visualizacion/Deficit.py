@@ -31,8 +31,8 @@ def preparar_dataframe_deficit(entradas):
         
         # IMPORTANTE: Extraer el déficit SOLO de pred["deficit"], sin cálculos alternativos
         deficit = pred.get("deficit")  # Este es el único valor a usar para déficit
-        
-        # Si no hay datos de déficit en predicción, continuar al siguiente registro
+          # IMPORTANTE: Si no hay datos de déficit en predicción, omitir este registro completamente
+        # Esto significa que los registros sin déficit no aparecerán en ningún análisis
         if deficit is None:
             continue
             
@@ -402,7 +402,7 @@ def analizar_plantas_deficit(entradas, df):
 
 def analizar_distribucion_temporal_deficit(df):
     """
-    Analiza la distribución temporal del déficit por días de semana, meses y estacionalidad
+    Analiza la distribución temporal del déficit por meses y estacionalidad
     Args:
         df (pd.DataFrame): DataFrame con datos de déficit procesados
     """
@@ -414,140 +414,153 @@ def analizar_distribucion_temporal_deficit(df):
     if df_analisis.empty:
         st.warning("No hay datos suficientes para el análisis de distribución temporal.")
         return
-        
-    # Crear 2 columnas para visualizaciones
-    col1, col2 = st.columns(2)
     
-    with col1:
-        # Análisis por día de la semana
-        st.write("#### Déficit por día de semana")
-        
-        # Mapping para traducir los nombres de los días
-        dias = {
-            'Monday': 'Lunes',
-            'Tuesday': 'Martes',
-            'Wednesday': 'Miércoles',
-            'Thursday': 'Jueves',
-            'Friday': 'Viernes',
-            'Saturday': 'Sábado',
-            'Sunday': 'Domingo'
-        }
-        
-        # Orden correcto de los días
-        dias_orden = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-        
-        # Calcular déficit promedio por día de semana
-        if "dia_semana" not in df_analisis.columns:
-            df_analisis.loc[:, "dia_semana"] = df_analisis.index.strftime('%A')
-        
-        deficit_por_dia = df_analisis.groupby('dia_semana')['deficit'].mean()
-        
-        # Reordenar según el orden de días correcto
-        deficit_por_dia = deficit_por_dia.reindex(dias_orden)
-        
-        # Reemplazar NaN con 0 para visualización
-        deficit_por_dia = deficit_por_dia.fillna(0)
-        
-        # Traducir los nombres
-        deficit_por_dia.index = [dias.get(dia, dia) for dia in deficit_por_dia.index]
-          # Crear gráfico de línea (sin marcadores)
-        fig = px.line(
-            x=deficit_por_dia.index,
-            y=deficit_por_dia.values,
-            labels={'x': 'Día de la semana', 'y': 'Déficit (MW)'},
-            title="Déficit promedio por día de la semana",
-            markers=False  # Sin marcadores/puntos
-        )
-        
-        # Configurar para mostrar solo líneas, sin puntos
-        fig.update_traces(mode='lines', line=dict(width=2.5, color='red'))
-        
-        st.plotly_chart(fig, use_container_width=True)
+    # Análisis por mes
+    st.write("#### Déficit por mes")
     
-    with col2:
-        # Análisis por mes
-        st.write("#### Déficit por mes")
-        
-        # Mapping para traducir los nombres de los meses
-        meses = {
-            'January': 'Enero',
-            'February': 'Febrero',
-            'March': 'Marzo',
-            'April': 'Abril',
-            'May': 'Mayo',
-            'June': 'Junio',
-            'July': 'Julio',
-            'August': 'Agosto',
-            'September': 'Septiembre',
-            'October': 'Octubre',
-            'November': 'Noviembre',
-            'December': 'Diciembre'
-        }
-        
-        # Crear columna de mes numérico
-        if "mes_num" not in df_analisis.columns:
-            df_analisis.loc[:, "mes_num"] = df_analisis.index.month
-        
-        # Calcular déficit promedio por mes
-        deficit_por_mes = df_analisis.groupby('mes_num')['deficit'].mean()
-        
-        # Crear gráfico
-        meses_orden = list(range(1, 13))
-        nombre_meses = [meses[datetime(2022, m, 1).strftime('%B')] for m in meses_orden]
-          # Reindexar para mostrar todos los meses y reemplazar NaN con 0
-        deficit_por_mes = deficit_por_mes.reindex(meses_orden).fillna(0)
-        
-        fig = px.line(
-            x=nombre_meses,
-            y=deficit_por_mes.values,
-            labels={'x': 'Mes', 'y': 'Déficit (MW)'},
+    # Mapping para traducir los nombres de los meses
+    meses = {
+        'January': 'Enero',
+        'February': 'Febrero',
+        'March': 'Marzo',
+        'April': 'Abril',
+        'May': 'Mayo',
+        'June': 'Junio',
+        'July': 'Julio',
+        'August': 'Agosto',
+        'September': 'Septiembre',
+        'October': 'Octubre',
+        'November': 'Noviembre',
+        'December': 'Diciembre'
+    }
+    
+    # Crear columna de mes numérico y nombre
+    if "mes_num" not in df_analisis.columns:
+        df_analisis.loc[:, "mes_num"] = df_analisis.index.month
+        df_analisis.loc[:, "mes_nombre"] = df_analisis.index.strftime('%B').map(meses)
+    
+    # Calcular déficit promedio por mes
+    deficit_por_mes = df_analisis.groupby('mes_num').agg({
+        'deficit': ['mean', 'count']  # Media y conteo de registros por mes
+    })
+    
+    # Aplanar MultiIndex
+    deficit_por_mes.columns = ['deficit_promedio', 'conteo']
+    deficit_por_mes = deficit_por_mes.reset_index()
+    
+    # Crear nombres de meses y añadir a dataframe
+    meses_orden = list(range(1, 13))
+    deficit_por_mes['mes_nombre'] = deficit_por_mes['mes_num'].apply(
+        lambda m: meses[datetime(2022, m, 1).strftime('%B')]
+    )
+    
+    # IMPORTANTE: NO reemplazar NaN con 0 para no mostrar falsos valores
+    # Crear dataframe solo con los meses que tienen datos
+    df_para_grafico = deficit_por_mes[deficit_por_mes['conteo'] > 0].copy()
+    
+    # Verificar que hay datos para graficar
+    if not df_para_grafico.empty:
+        # Crear gráfico de barras (como fue solicitado)
+        fig = px.bar(
+            df_para_grafico,
+            x='mes_nombre',
+            y='deficit_promedio',
+            labels={'mes_nombre': 'Mes', 'deficit_promedio': 'Déficit (MW)'},
             title="Déficit promedio por mes",
-            markers=False  # Sin marcadores/puntos
+            text_auto='.0f',  # Mostrar valores en barras sin decimales
+            color='deficit_promedio',
+            color_continuous_scale='Reds'
         )
         
-        # Configurar para mostrar solo líneas, sin puntos
-        fig.update_traces(mode='lines', line=dict(width=2.5, color='red'))
+        # Mostrar el número de registros por mes como información adicional
+        fig.update_traces(
+            hovertemplate='<b>%{x}</b><br>Déficit promedio: %{y:.0f} MW<br>Registros: %{customdata}<extra></extra>',
+            customdata=df_para_grafico['conteo']
+        )
+        
+        # Mejorar diseño
+        fig.update_layout(
+            xaxis_title="Mes",
+            yaxis_title="Déficit promedio (MW)",
+            height=400
+        )
         
         st.plotly_chart(fig, use_container_width=True)
-    
-    # Análisis de tendencia anual
+        
+        # También mostramos tabla con datos para verificación
+        st.write("Desglose de datos de déficit por mes:")
+        
+        # Formato para mostrar
+        tabla_meses = df_para_grafico[['mes_nombre', 'deficit_promedio', 'conteo']]
+        tabla_meses = tabla_meses.rename(columns={
+            'mes_nombre': 'Mes', 
+            'deficit_promedio': 'Déficit promedio (MW)',
+            'conteo': 'Días con datos'
+        })
+        
+        # Formatear valores numéricos
+        tabla_meses['Déficit promedio (MW)'] = tabla_meses['Déficit promedio (MW)'].map('{:.0f}'.format)
+        
+        st.dataframe(tabla_meses, use_container_width=True, hide_index=True)
+    else:
+        st.warning("No hay suficientes datos para mostrar el análisis por mes.")
+      # Análisis de tendencia anual
     st.write("#### Tendencia anual del déficit")
     
     try:
         # Agrupar por año y mes
         df_analisis.loc[:, "año_mes"] = df_analisis.index.strftime('%Y-%m')
-        deficit_por_año_mes = df_analisis.groupby('año_mes')['deficit'].mean().reset_index()
+        
+        # Calcular déficit promedio y conteo por año-mes
+        deficit_por_año_mes = df_analisis.groupby('año_mes').agg({
+            'deficit': ['mean', 'count', 'max']  # Media, conteo y máximo
+        }).reset_index()
+        
+        # Aplanar columnas
+        deficit_por_año_mes.columns = ['año_mes', 'deficit_promedio', 'conteo', 'deficit_max']
         
         # Convertir a formato de fecha
         deficit_por_año_mes['año_mes'] = pd.to_datetime(deficit_por_año_mes['año_mes'] + '-01')
         
         # Ordenar cronológicamente
-        deficit_por_año_mes = deficit_por_año_mes.sort_values('año_mes')        # Crear gráfico de tendencia (solo líneas, sin marcadores)
+        deficit_por_año_mes = deficit_por_año_mes.sort_values('año_mes')
+        
+        # Verificar valores máximos para asegurar que están siendo considerados        st.info(f"Déficit máximo en el período analizado por año-mes: {int(deficit_por_año_mes['deficit_max'].max())} MW")
+        
+        # Crear gráfico de tendencia (solo líneas, sin marcadores)
         fig = px.line(
             deficit_por_año_mes,
             x='año_mes',
-            y='deficit',
+            y='deficit_promedio',  # Columna renombrada
             markers=False,  # Sin marcadores (puntos)
-            labels={'año_mes': 'Año-Mes', 'deficit': 'Déficit (MW)'},
+            labels={'año_mes': 'Año-Mes', 'deficit_promedio': 'Déficit (MW)'},
             title="Tendencia del déficit por año y mes"
         )
         
         # Asegurar que solo muestre líneas, sin puntos
-        fig.update_traces(mode='lines', line=dict(width=2.5))
+        fig.update_traces(
+            mode='lines', 
+            line=dict(width=2.5),
+            hovertemplate='<b>%{x|%b %Y}</b><br>Déficit promedio: %{y:.0f} MW<br>Registros: %{customdata}<extra></extra>',
+            customdata=deficit_por_año_mes['conteo']
+        )
+        
+        # Establecer límites Y para mostrar todos los valores
+        y_max = max(2000, int(deficit_por_año_mes['deficit_max'].max() * 1.1))
+        fig.update_layout(yaxis=dict(range=[0, y_max]))
         
         # Mejorar formato de fechas
         fig.update_xaxes(
             dtick="M3",  # Mostrar cada 3 meses
             tickformat="%b\n%Y"
         )
-        
-        # Añadir línea de tendencia
+          # Añadir línea de tendencia
         if len(deficit_por_año_mes) > 1:
             from scipy import stats
             
             # Convertir fechas a números ordinales para regresión lineal
             x = [(d - pd.Timestamp("1970-01-01")).days for d in deficit_por_año_mes['año_mes']]
-            y = deficit_por_año_mes['deficit'].values
+            y = deficit_por_año_mes['deficit_promedio'].values  # Columna renombrada
             
             # Calcular regresión lineal
             slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
@@ -569,8 +582,7 @@ def analizar_distribucion_temporal_deficit(df):
             ))
         
         st.plotly_chart(fig, use_container_width=True)
-        
-        # Añadir estadísticas de tendencia
+          # Añadir estadísticas de tendencia
         if len(deficit_por_año_mes) > 1:
             tendencia = "creciente" if slope > 0 else "decreciente"
             cambio_mensual = slope * 30  # Cambio aproximado por mes
@@ -581,6 +593,7 @@ def analizar_distribucion_temporal_deficit(df):
             - Tendencia: {tendencia}
             - Cambio promedio mensual: {abs(cambio_mensual):.1f} MW {'más' if slope > 0 else 'menos'} por mes
             - Coeficiente de determinación (R²): {r_value**2:.2f}
+            - Déficit máximo registrado en el período: {int(deficit_por_año_mes['deficit_max'].max())} MW
             """)
     except Exception as e:
         st.error(f"Error al generar el análisis de tendencia: {str(e)}")
@@ -819,16 +832,20 @@ def app():
     
     # Mostrar gráfico principal de déficit con línea de media
     st.write("### Déficit energético en el período seleccionado")
-    
-    # Filtrar valores nulos para cálculos
+      # Filtrar valores nulos para cálculos
     df_deficit_no_nulo = df.dropna(subset=["deficit"])
     
-    # Calcular la media del déficit
+    # Calcular la media del déficit solo de valores presentes
     deficit_medio = df_deficit_no_nulo['deficit'].mean() if not df_deficit_no_nulo.empty else 0
+    deficit_max = df_deficit_no_nulo['deficit'].max() if not df_deficit_no_nulo.empty else 0
+    
+    # Mostrar estadísticas antes del gráfico
+    st.info(f"Déficit máximo en el período seleccionado: {int(deficit_max)} MW")
     
     # Crear gráfico
     fig = go.Figure()
-      # Añadir línea de déficit (solo líneas, sin marcadores/puntos)
+    
+    # Añadir línea de déficit (solo líneas, sin marcadores/puntos)
     fig.add_trace(go.Scatter(
         x=df_deficit_no_nulo.index,  # Solo usar valores no nulos
         y=df_deficit_no_nulo['deficit'],
@@ -843,14 +860,16 @@ def app():
             x=[df_deficit_no_nulo.index.min(), df_deficit_no_nulo.index.max()],
             y=[deficit_medio, deficit_medio],
             mode='lines',
-            name=f'Media: {deficit_medio:.1f} MW',
+            name=f'Media: {int(deficit_medio)} MW',
             line=dict(color='black', width=1, dash='dash')
-        ))
-      # Configurar diseño
+        ))      # Configurar diseño con límites de Y apropiados para mostrar todos los valores
+    y_max = max(2000, int(deficit_max * 1.1)) if deficit_max else 2000  # Asegurar espacio suficiente
+    
     fig.update_layout(
         title=f"Evolución del déficit energético ({fecha_inicio} a {fecha_fin})",
         xaxis_title="Fecha",
         yaxis_title="Déficit (MW)",
+        yaxis=dict(range=[0, y_max]),  # Establecer límites explícitamente
         hovermode="x unified",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         height=400
