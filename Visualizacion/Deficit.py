@@ -23,31 +23,44 @@ def preparar_dataframe_deficit(entradas):
     """
     filas = []
     for e in entradas:
+        # Extraer todos los datos relevantes
         pred = e["datos"].get("prediccion", {})
         info_matutina = e["datos"].get("info_matutina", {})
         impacto = e["datos"].get("impacto", {})
         
-        # Calcular el déficit correctamente: si está en predicción usamos ese valor,
-        # si no, intentamos calcularlo como (demanda - disponibilidad)
+        # Extraer datos primarios directamente de la sección "prediccion"
+        # IMPORTANTE: El déficit debe obtenerse directamente de la sección "prediccion"
         deficit = pred.get("deficit")
         demanda = pred.get("demanda_maxima")
         disponibilidad = pred.get("disponibilidad")
+        afectacion = pred.get("afectacion")
         
-        # Si el déficit no está directamente reportado, calcularlo
+        # Si el déficit no está directamente en prediccion, intentamos calcularlo
         if deficit is None and demanda is not None and disponibilidad is not None:
             if demanda > disponibilidad:
                 deficit = demanda - disponibilidad
             else:
                 deficit = 0
-        
-        porcentaje_deficit = ((deficit / demanda) * 100) if deficit is not None and demanda and demanda > 0 else None
+                
+        # Verificar coherencia: en algunos casos el déficit puede estar reportado como la afectación
+        if deficit is None and afectacion is not None:
+            deficit = afectacion
+            
+        # Calcular el porcentaje del déficit respecto a la demanda
+        porcentaje_deficit = None
+        if deficit is not None and demanda is not None and demanda > 0:
+            porcentaje_deficit = (deficit / demanda) * 100
         
         # Obtener el máximo impacto reportado
-        maximo_impacto = impacto.get("maximo", {}).get("mw") if impacto else None
+        maximo_impacto = None
+        if impacto:
+            if isinstance(impacto.get("maximo"), dict):
+                maximo_impacto = impacto.get("maximo").get("mw")
+            elif isinstance(impacto, (int, float)):
+                maximo_impacto = impacto
         
         # Contar plantas en avería usando los nombres estandarizados
         plantas_averia = e["datos"].get("plantas", {}).get("averia", [])
-        # Usamos set para evitar plantas duplicadas debido a estandarización
         plantas_estandarizadas = set()
         from .plant_standardizer import get_canonical_plant_name
         
@@ -60,13 +73,19 @@ def preparar_dataframe_deficit(entradas):
         
         cant_plantas_averia = len(plantas_estandarizadas)
         
-        # Motores fuera de servicio
+        # Motores fuera de servicio (generación distribuida)
         motores_con_problemas = e["datos"].get("distribuida", {}).get("motores_con_problemas", {})
-        impacto_motores_mw = motores_con_problemas.get("impacto_mw")
+        impacto_motores_mw = None
+        if motores_con_problemas:
+            if isinstance(motores_con_problemas, dict):
+                impacto_motores_mw = motores_con_problemas.get("impacto_mw")
+            elif isinstance(motores_con_problemas, (int, float)):
+                impacto_motores_mw = motores_con_problemas
         
+        # Crear el registro con todos los datos procesados
         filas.append({
             "fecha": e["fecha"],
-            "afectacion": pred.get("afectacion"),
+            "afectacion": afectacion,
             "disponibilidad": disponibilidad,
             "demanda": demanda,
             "deficit": deficit,
@@ -75,17 +94,24 @@ def preparar_dataframe_deficit(entradas):
             "maximo_impacto": maximo_impacto,
             "cant_plantas_averia": cant_plantas_averia,
             "impacto_motores_mw": impacto_motores_mw,
-            "deficit_matutino": info_matutina.get("deficit"),
+            "deficit_matutino": info_matutina.get("deficit") if info_matutina else None,
             "dia_semana": e["fecha"].strftime('%A'),
             "mes": e["fecha"].strftime('%B'),
-            "año": e["fecha"].year
+            "año": e["fecha"].year,
+            "enlace": e.get("enlace", "")
         })
     
-    df = pd.DataFrame(filas).set_index("fecha").sort_index()
-    
-    # Agregar columnas de tendencia
-    df['deficit_7d_avg'] = df['deficit'].rolling(window=7, min_periods=1).mean()
-    df['deficit_30d_avg'] = df['deficit'].rolling(window=30, min_periods=1).mean()
+    # Crear DataFrame y establecer fecha como índice
+    df = pd.DataFrame(filas)
+    if not df.empty:
+        df = df.set_index("fecha").sort_index()
+        
+        # Reemplazar NaN con None para mejor manejo en las visualizaciones
+        df = df.replace({pd.NA: None})
+        
+        # Agregar columnas de tendencia usando ventanas móviles
+        df['deficit_7d_avg'] = df['deficit'].rolling(window=7, min_periods=1).mean()
+        df['deficit_30d_avg'] = df['deficit'].rolling(window=30, min_periods=1).mean()
     
     return df
 
@@ -104,20 +130,31 @@ def mostrar_indicadores_deficit(df):
         st.error("No hay datos suficientes para calcular indicadores de déficit.")
         return
     
-    # Calcular métricas para el período seleccionado
+    # Calcular métricas para el período seleccionado solo con datos válidos
+    df_deficit_positivo = df_deficit_no_nulo[df_deficit_no_nulo["deficit"] > 0]
+    
     deficit_promedio = df_deficit_no_nulo["deficit"].mean()
     deficit_mediana = df_deficit_no_nulo["deficit"].median()
     deficit_maximo = df_deficit_no_nulo["deficit"].max()
-    deficit_minimo = df_deficit_no_nulo["deficit"].min()
+    deficit_minimo = df_deficit_positivo["deficit"].min() if not df_deficit_positivo.empty else 0
     desviacion_std = df_deficit_no_nulo["deficit"].std()
     
     # Obtener fechas de valores máximos y mínimos
-    fecha_max = df_deficit_no_nulo.loc[df_deficit_no_nulo["deficit"] == deficit_maximo].index[0].strftime("%d/%m/%Y") if not df_deficit_no_nulo.empty else "N/D"
-    fecha_min = df_deficit_no_nulo.loc[df_deficit_no_nulo["deficit"] == deficit_minimo].index[0].strftime("%d/%m/%Y") if not df_deficit_no_nulo.empty and deficit_minimo > 0 else "N/D"
+    fecha_max = None
+    if not pd.isna(deficit_maximo):
+        max_indices = df_deficit_no_nulo[df_deficit_no_nulo["deficit"] == deficit_maximo].index
+        if not max_indices.empty:
+            fecha_max = max_indices[0].strftime("%d/%m/%Y")
+    
+    fecha_min = None
+    if not pd.isna(deficit_minimo) and deficit_minimo > 0:
+        min_indices = df_deficit_positivo[df_deficit_positivo["deficit"] == deficit_minimo].index
+        if not min_indices.empty:
+            fecha_min = min_indices[0].strftime("%d/%m/%Y")
     
     # Días con déficit
     dias_totales = len(df_deficit_no_nulo)
-    dias_con_deficit = len(df_deficit_no_nulo[df_deficit_no_nulo["deficit"] > 0])
+    dias_con_deficit = len(df_deficit_positivo)
     porcentaje_dias_deficit = (dias_con_deficit / dias_totales * 100) if dias_totales > 0 else 0
     
     # Mostrar KPIs en columnas
@@ -138,13 +175,13 @@ def mostrar_indicadores_deficit(df):
         st.metric(
             label=f"Déficit Máximo (MW)",
             value=f"{int(deficit_maximo)}" if not pd.isna(deficit_maximo) else "N/D",
-            help=f"Registrado el {fecha_max}"
+            help=f"Registrado el {fecha_max}" if fecha_max else ""
         )
         
         st.metric(
             label="Déficit Mínimo >0 (MW)",
-            value=f"{int(deficit_minimo)}" if not pd.isna(deficit_minimo) and deficit_minimo > 0 else "N/D",
-            help=f"Registrado el {fecha_min}"
+            value=f"{int(deficit_minimo)}" if not pd.isna(deficit_minimo) and deficit_minimo > 0 else "0",
+            help=f"Registrado el {fecha_min}" if fecha_min else ""
         )
     
     with col3:
@@ -161,7 +198,7 @@ def mostrar_indicadores_deficit(df):
     with col4:
         st.metric(
             label="Días con Déficit",
-            value=f"{dias_con_deficit}" if dias_con_deficit >= 0 else "N/D"
+            value=f"{dias_con_deficit}" if dias_con_deficit >= 0 else "0"
         )
         
         st.metric(
@@ -267,26 +304,69 @@ def analizar_plantas_deficit(entradas, df):
                         delta=f"{int(diferencia)}" if not pd.isna(diferencia) else None,
                         delta_color="inverse" if diferencia > 0 else "normal"
                     )
+                  # Asegurarse de que no hay NaN en los datos
+                df_plot = df_planta_filtrado.reset_index().dropna(subset=["deficit"])
                 
-                # Gráfico de déficit cuando la planta está en avería
-                fig = px.scatter(
-                    df_planta_filtrado.reset_index(),
-                    x="fecha",
-                    y="deficit",
-                    size="deficit",
-                    color="deficit",
-                    color_continuous_scale="Reds",
-                    title=f"Déficit cuando {planta_seleccionada} está en avería",
-                    labels={"fecha": "Fecha", "deficit": "Déficit (MW)"}
-                )
+                # Crear dos gráficos: detalle y evolución histórica
+                tabs = st.tabs(["Déficit por fecha", "Evolución histórica"])
                 
-                # Agregar línea de déficit promedio
-                fig.add_hline(
-                    y=deficit_promedio_general,
-                    line_dash="dash",
-                    line_color="blue",
-                    annotation_text=f"Déficit promedio general: {int(deficit_promedio_general)} MW"
-                )
+                with tabs[0]:
+                    # Gráfico de déficit cuando la planta está en avería - usando líneas en lugar de scatter para evitar problemas con NaN
+                    fig = px.line(
+                        df_plot,
+                        x="fecha",
+                        y="deficit",
+                        markers=True,
+                        color_discrete_sequence=["red"],
+                        title=f"Déficit cuando {planta_seleccionada} está en avería",
+                        labels={"fecha": "Fecha", "deficit": "Déficit (MW)"}
+                    )
+                    
+                    # Agregar línea de déficit promedio
+                    if not pd.isna(deficit_promedio_general):
+                        fig.add_hline(
+                            y=deficit_promedio_general,
+                            line_dash="dash",
+                            line_color="blue",
+                            annotation_text=f"Déficit promedio general: {int(deficit_promedio_general)} MW"
+                        )
+                    
+                    fig.update_traces(line=dict(width=2), marker=dict(size=8))
+                    fig.update_layout(height=400)
+                    st.plotly_chart(fig, use_container_width=True)
+                
+                with tabs[1]:
+                    # Evolución histórica de averías
+                    fechas_ordenadas = sorted(fechas_averia)
+                    fechas_str = [fecha.strftime("%Y-%m-%d") for fecha in fechas_ordenadas]
+                    
+                    # Crear un histograma de frecuencia por mes
+                    df_fechas = pd.DataFrame({"fecha": fechas_ordenadas})
+                    df_fechas["mes"] = df_fechas["fecha"].dt.strftime("%Y-%m")
+                    conteo_por_mes = df_fechas.groupby("mes").count().rename(columns={"fecha": "días_en_avería"})
+                    
+                    # Gráfico de barras por mes
+                    fig_hist = px.bar(
+                        conteo_por_mes.reset_index(),
+                        x="mes",
+                        y="días_en_avería",
+                        title=f"Días en avería de {planta_seleccionada} por mes",
+                        labels={"mes": "Mes", "días_en_avería": "Días en avería"},
+                        color="días_en_avería",
+                        color_continuous_scale="Reds"
+                    )
+                    fig_hist.update_layout(height=400)
+                    st.plotly_chart(fig_hist, use_container_width=True)
+                
+                # Información técnica detallada
+                with st.expander("Información técnica detallada"):
+                    st.write("#### Períodos de avería")
+                    st.write(f"La planta **{planta_seleccionada}** ha estado en avería durante los siguientes períodos:")
+                    
+                    # Mostrar tabla con fechas de avería
+                    df_periodos = pd.DataFrame({"fecha": fechas_ordenadas})
+                    df_periodos["fecha_str"] = df_periodos["fecha"].dt.strftime("%d/%m/%Y")
+                    st.dataframe(df_periodos[["fecha_str"]].rename(columns={"fecha_str": "Fecha"}), use_container_width=True)
                 
                 fig.update_layout(height=400)
                 st.plotly_chart(fig, use_container_width=True)
@@ -335,7 +415,14 @@ def analizar_distribucion_temporal_deficit(df):
     """
     st.subheader("Distribución Temporal del Déficit")
     
-    # Crear 3 columnas para visualizaciones
+    # Filtrar datos no nulos para análisis
+    df_analisis = df.dropna(subset=["deficit"]).copy()
+    
+    if df_analisis.empty:
+        st.warning("No hay datos suficientes para el análisis de distribución temporal.")
+        return
+        
+    # Crear 2 columnas para visualizaciones
     col1, col2 = st.columns(2)
     
     with col1:
@@ -357,13 +444,16 @@ def analizar_distribucion_temporal_deficit(df):
         dias_orden = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
         
         # Calcular déficit promedio por día de semana
-        if "dia_semana" not in df.columns:
-            df.loc[:, "dia_semana"] = df.index.strftime('%A')
+        if "dia_semana" not in df_analisis.columns:
+            df_analisis.loc[:, "dia_semana"] = df_analisis.index.strftime('%A')
         
-        deficit_por_dia = df.groupby('dia_semana')['deficit'].mean()
+        deficit_por_dia = df_analisis.groupby('dia_semana')['deficit'].mean()
         
         # Reordenar según el orden de días correcto
         deficit_por_dia = deficit_por_dia.reindex(dias_orden)
+        
+        # Reemplazar NaN con 0 para visualización
+        deficit_por_dia = deficit_por_dia.fillna(0)
         
         # Traducir los nombres
         deficit_por_dia.index = [dias.get(dia, dia) for dia in deficit_por_dia.index]
@@ -401,18 +491,18 @@ def analizar_distribucion_temporal_deficit(df):
         }
         
         # Crear columna de mes numérico
-        if "mes_num" not in df.columns:
-            df.loc[:, "mes_num"] = df.index.month
+        if "mes_num" not in df_analisis.columns:
+            df_analisis.loc[:, "mes_num"] = df_analisis.index.month
         
         # Calcular déficit promedio por mes
-        deficit_por_mes = df.groupby('mes_num')['deficit'].mean()
+        deficit_por_mes = df_analisis.groupby('mes_num')['deficit'].mean()
         
         # Crear gráfico
         meses_orden = list(range(1, 13))
         nombre_meses = [meses[datetime(2022, m, 1).strftime('%B')] for m in meses_orden]
         
-        # Reindexar para mostrar todos los meses
-        deficit_por_mes = deficit_por_mes.reindex(meses_orden)
+        # Reindexar para mostrar todos los meses y reemplazar NaN con 0
+        deficit_por_mes = deficit_por_mes.reindex(meses_orden).fillna(0)
         
         fig = px.bar(
             x=nombre_meses,
@@ -428,27 +518,78 @@ def analizar_distribucion_temporal_deficit(df):
     # Análisis de tendencia anual
     st.write("#### Tendencia anual del déficit")
     
-    # Agrupar por año y mes
-    df.loc[:, "año_mes"] = df.index.strftime('%Y-%m')
-    deficit_por_año_mes = df.groupby('año_mes')['deficit'].mean().reset_index()
-    deficit_por_año_mes['año_mes'] = pd.to_datetime(deficit_por_año_mes['año_mes'] + '-01')
-    
-    # Crear gráfico
-    fig = px.line(
-        deficit_por_año_mes,
-        x='año_mes',
-        y='deficit',
-        markers=True,
-        labels={'año_mes': 'Año-Mes', 'deficit': 'Déficit (MW)'},
-        title="Tendencia del déficit por año y mes"
-    )
-    
-    fig.update_xaxes(
-        dtick="M3",
-        tickformat="%b\n%Y"
-    )
-    
-    st.plotly_chart(fig, use_container_width=True)
+    try:
+        # Agrupar por año y mes
+        df_analisis.loc[:, "año_mes"] = df_analisis.index.strftime('%Y-%m')
+        deficit_por_año_mes = df_analisis.groupby('año_mes')['deficit'].mean().reset_index()
+        
+        # Convertir a formato de fecha
+        deficit_por_año_mes['año_mes'] = pd.to_datetime(deficit_por_año_mes['año_mes'] + '-01')
+        
+        # Ordenar cronológicamente
+        deficit_por_año_mes = deficit_por_año_mes.sort_values('año_mes')
+        
+        # Crear gráfico de tendencia
+        fig = px.line(
+            deficit_por_año_mes,
+            x='año_mes',
+            y='deficit',
+            markers=True,
+            labels={'año_mes': 'Año-Mes', 'deficit': 'Déficit (MW)'},
+            title="Tendencia del déficit por año y mes"
+        )
+        
+        # Mejorar formato de fechas
+        fig.update_xaxes(
+            dtick="M3",  # Mostrar cada 3 meses
+            tickformat="%b\n%Y"
+        )
+        
+        # Añadir línea de tendencia
+        if len(deficit_por_año_mes) > 1:
+            from scipy import stats
+            
+            # Convertir fechas a números ordinales para regresión lineal
+            x = [(d - pd.Timestamp("1970-01-01")).days for d in deficit_por_año_mes['año_mes']]
+            y = deficit_por_año_mes['deficit'].values
+            
+            # Calcular regresión lineal
+            slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
+            
+            # Generar puntos para la línea de tendencia
+            x_trend = [min(x), max(x)]
+            y_trend = [slope * xi + intercept for xi in x_trend]
+            
+            # Convertir x de nuevo a fechas
+            x_dates = [pd.Timestamp("1970-01-01") + pd.Timedelta(days=int(xi)) for xi in x_trend]
+            
+            # Añadir línea de tendencia
+            fig.add_trace(go.Scatter(
+                x=x_dates, 
+                y=y_trend,
+                mode='lines',
+                name='Tendencia',
+                line=dict(color='black', width=2, dash='dash')
+            ))
+        
+        st.plotly_chart(fig, use_container_width=True)
+        
+        # Añadir estadísticas de tendencia
+        if len(deficit_por_año_mes) > 1:
+            tendencia = "creciente" if slope > 0 else "decreciente"
+            cambio_mensual = slope * 30  # Cambio aproximado por mes
+            
+            st.write(f"""
+            **Análisis de tendencia:**
+            
+            - Tendencia: {tendencia}
+            - Cambio promedio mensual: {abs(cambio_mensual):.1f} MW {'más' if slope > 0 else 'menos'} por mes
+            - Coeficiente de determinación (R²): {r_value**2:.2f}
+            """)
+    except Exception as e:
+        st.error(f"Error al generar el análisis de tendencia: {str(e)}")
+        import traceback
+        st.write(traceback.format_exc())
 
 def preparar_datos_detallados(df, filtro_año=None):
     """
@@ -480,7 +621,7 @@ def mostrar_tabla_datos_detallados(df):
         return
     
     # Opciones de visualización
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         mostrar_solo_deficit = st.checkbox(
             "Mostrar solo días con déficit", 
@@ -495,20 +636,39 @@ def mostrar_tabla_datos_detallados(df):
             key="ordenar_tabla_deficit"
         )
     
+    with col3:
+        mostrar_enlaces = st.checkbox(
+            "Mostrar enlaces a noticias",
+            value=True,
+            key="mostrar_enlaces"
+        )
+    
     # Aplicar filtros adicionales
     df_filtrado = df.copy()
-    if mostrar_solo_deficit:
-        df_filtrado = df_filtrado[df_filtrado["deficit"] > 0]
     
-    # Aplicar ordenamiento
+    # Manejar valores nulos para evitar problemas de filtrado
+    if mostrar_solo_deficit:
+        # Filtrar solo registros con déficit positivo (mayor que 0)
+        df_filtrado = df_filtrado[(df_filtrado["deficit"].notnull()) & (df_filtrado["deficit"] > 0)]
+    
+    if df_filtrado.empty:
+        st.warning("No hay registros que cumplan con los criterios de filtrado.")
+        return
+    
+    # Aplicar ordenamiento (asegurando que los valores nulos no causen problemas)
     if ordenar_por == "Fecha (↑)":
         df_filtrado = df_filtrado.sort_index(ascending=True)
     elif ordenar_por == "Fecha (↓)":
         df_filtrado = df_filtrado.sort_index(ascending=False)
     elif ordenar_por == "Déficit (↑)":
-        df_filtrado = df_filtrado.sort_values("deficit", ascending=True)
+        # Para ordenar por déficit, primero colocamos los nulos al final
+        df_no_nulos = df_filtrado[df_filtrado["deficit"].notnull()]
+        df_nulos = df_filtrado[df_filtrado["deficit"].isnull()]
+        df_filtrado = pd.concat([df_no_nulos.sort_values("deficit", ascending=True), df_nulos])
     elif ordenar_por == "Déficit (↓)":
-        df_filtrado = df_filtrado.sort_values("deficit", ascending=False)
+        df_no_nulos = df_filtrado[df_filtrado["deficit"].notnull()]
+        df_nulos = df_filtrado[df_filtrado["deficit"].isnull()]
+        df_filtrado = pd.concat([df_no_nulos.sort_values("deficit", ascending=False), df_nulos])
     
     # Reindexar para mostrar la fecha como columna
     df_mostrar = df_filtrado.reset_index()
@@ -517,10 +677,16 @@ def mostrar_tabla_datos_detallados(df):
     df_mostrar["fecha"] = df_mostrar["fecha"].dt.strftime("%Y-%m-%d")
     
     # Seleccionar columnas a mostrar
-    columnas_mostrar = [
-        "fecha", "deficit", "porcentaje_deficit", "demanda", 
+    columnas_base = [
+        "fecha", "deficit", "porcentaje_deficit", "demanda", "disponibilidad",
         "cant_plantas_averia", "impacto_motores_mw", "año", "mes", "dia_semana"
     ]
+    
+    # Añadir enlace si está disponible y seleccionado
+    if mostrar_enlaces and "enlace" in df_mostrar.columns:
+        columnas_mostrar = columnas_base + ["enlace"]
+    else:
+        columnas_mostrar = columnas_base
     
     # Filtrar columnas disponibles
     columnas_disponibles = [col for col in columnas_mostrar if col in df_mostrar.columns]
@@ -531,19 +697,46 @@ def mostrar_tabla_datos_detallados(df):
         "deficit": "Déficit (MW)",
         "porcentaje_deficit": "% de Déficit",
         "demanda": "Demanda (MW)",
+        "disponibilidad": "Disponibilidad (MW)",
         "cant_plantas_averia": "Plantas en Avería",
         "impacto_motores_mw": "Impacto Motores (MW)",
         "año": "Año",
         "mes": "Mes",
-        "dia_semana": "Día"
+        "dia_semana": "Día",
+        "enlace": "Enlace al reporte"
     }
     
+    # Formatear para mejor visualización y manejo de NaN
+    df_formato = df_mostrar[columnas_disponibles].copy()
+    
+    # Reemplazar NaN con valores más descriptivos en formato texto
+    for col in df_formato.columns:
+        if col == "enlace":
+            continue
+        if df_formato[col].dtype == float or df_formato[col].dtype == int:
+            df_formato[col] = df_formato[col].fillna("N/D")
+    
     # Mostrar DataFrame
-    st.write(f"Mostrando {len(df_mostrar)} registros")
-    st.dataframe(df_mostrar[columnas_disponibles].rename(columns={c: nombres_columnas.get(c, c) for c in columnas_disponibles}), use_container_width=True)
+    st.write(f"Mostrando {len(df_formato)} registros")
+    
+    # Convertir enlaces a markdown si están disponibles
+    if "enlace" in df_formato.columns and mostrar_enlaces:
+        df_formato["enlace"] = df_formato["enlace"].apply(
+            lambda x: f"[Ver noticia]({x})" if isinstance(x, str) and x.startswith("http") else ""
+        )
+    
+    # Mostrar la tabla con columnas renombradas
+    st.dataframe(
+        df_formato.rename(columns={c: nombres_columnas.get(c, c) for c in df_formato.columns}), 
+        use_container_width=True,
+        hide_index=True
+    )
     
     # Botón para descargar datos
-    csv = df_mostrar.to_csv(index=False).encode('utf-8')
+    # Convertir NaN a string vacío para CSV
+    df_csv = df_mostrar.fillna("")
+    csv = df_csv.to_csv(index=False).encode('utf-8')
+    
     st.download_button(
         label="Descargar datos como CSV",
         data=csv,
@@ -560,7 +753,11 @@ def app():
     st.markdown("---")
     
     # Cargar datos
-    entradas = cargar_datos()
+    try:
+        entradas = cargar_datos()
+    except Exception as e:
+        st.error(f"Error al cargar datos: {str(e)}")
+        return
     
     # Verificar que se cargaron los datos correctamente
     if not entradas:
@@ -568,7 +765,11 @@ def app():
         return
     
     # Preparar dataframe específico para análisis de déficit
-    df_completo = preparar_dataframe_deficit(entradas)
+    try:
+        df_completo = preparar_dataframe_deficit(entradas)
+    except Exception as e:
+        st.error(f"Error al procesar los datos: {str(e)}")
+        return
     
     if df_completo.empty:
         st.error("No hay datos disponibles para analizar.")
@@ -577,29 +778,36 @@ def app():
     # Añadir selector de fechas al inicio
     st.write("### Selecciona el rango de fechas a analizar")
     
+    try:
+        fecha_min = df_completo.index.min().date()
+        fecha_max = df_completo.index.max().date()
+    except Exception as e:
+        st.error(f"Error al determinar el rango de fechas: {str(e)}")
+        return
+    
     col1, col2, col3 = st.columns([2, 2, 1])
     with col1:
         fecha_inicio = st.date_input(
             "Fecha de inicio",
-            value=df_completo.index.min().date(),
-            min_value=df_completo.index.min().date(),
-            max_value=df_completo.index.max().date(),
+            value=fecha_min,
+            min_value=fecha_min,
+            max_value=fecha_max,
             key="fecha_inicio_deficit"
         )
     
     with col2:
         fecha_fin = st.date_input(
             "Fecha de fin",
-            value=df_completo.index.max().date(),
-            min_value=df_completo.index.min().date(),
-            max_value=df_completo.index.max().date(),
+            value=fecha_max,
+            min_value=fecha_min,
+            max_value=fecha_max,
             key="fecha_fin_deficit"
         )
     
     with col3:
         if st.button("Ver todo", key="ver_todo_deficit"):
-            fecha_inicio = df_completo.index.min().date()
-            fecha_fin = df_completo.index.max().date()
+            fecha_inicio = fecha_min
+            fecha_fin = fecha_max
             st.experimental_rerun()
     
     # Filtrar dataframe según el rango de fechas seleccionado
@@ -607,7 +815,7 @@ def app():
     fin_dt = datetime.combine(fecha_fin, datetime.max.time())
     
     # Filtrar el dataframe para el rango seleccionado
-    df = df_completo[(df_completo.index >= inicio_dt) & (df_completo.index <= fin_dt)]
+    df = df_completo[(df_completo.index >= inicio_dt) & (df_completo.index <= fin_dt)].copy()
     
     if df.empty:
         st.warning("No hay datos disponibles para el rango de fechas seleccionado.")
@@ -617,7 +825,7 @@ def app():
     st.write("### Déficit energético en el período seleccionado")
     
     # Filtrar valores nulos para cálculos
-    df_deficit_no_nulo = df[df["deficit"].notnull()]
+    df_deficit_no_nulo = df.dropna(subset=["deficit"])
     
     # Calcular la media del déficit
     deficit_medio = df_deficit_no_nulo['deficit'].mean() if not df_deficit_no_nulo.empty else 0
@@ -627,23 +835,24 @@ def app():
     
     # Añadir línea de déficit
     fig.add_trace(go.Scatter(
-        x=df.index,
-        y=df['deficit'],
-        mode='lines',
+        x=df_deficit_no_nulo.index,  # Solo usar valores no nulos
+        y=df_deficit_no_nulo['deficit'],
+        mode='lines+markers',
         name='Déficit (MW)',
-        line=dict(color='red', width=2)
+        line=dict(color='red', width=2),
+        marker=dict(size=6)
     ))
     
-    # Añadir línea de media
-    fig.add_trace(go.Scatter(
-        x=[df.index.min(), df.index.max()],
-        y=[deficit_medio, deficit_medio],
-        mode='lines',
-        name=f'Media: {deficit_medio:.1f} MW',
-        line=dict(color='black', width=1, dash='dash')
-    ))
-    
-    # Configurar diseño
+    # Añadir línea de media si hay datos
+    if not pd.isna(deficit_medio) and not df_deficit_no_nulo.empty:
+        fig.add_trace(go.Scatter(
+            x=[df_deficit_no_nulo.index.min(), df_deficit_no_nulo.index.max()],
+            y=[deficit_medio, deficit_medio],
+            mode='lines',
+            name=f'Media: {deficit_medio:.1f} MW',
+            line=dict(color='black', width=1, dash='dash')
+        ))
+      # Configurar diseño
     fig.update_layout(
         title=f"Evolución del déficit energético ({fecha_inicio} a {fecha_fin})",
         xaxis_title="Fecha",
@@ -682,17 +891,17 @@ def app():
             "Sunday": "Domingo"
         }
         
-        # Convertir a día de la semana
+        # Convertir a día de la semana si no existe
         if "dia_semana" not in df.columns:
-            df["dia_semana"] = df.index.strftime('%A')  # Día de la semana en inglés
+            df.loc[:, "dia_semana"] = df.index.strftime('%A')  # Día de la semana en inglés
             
         # Análisis por mes
         st.subheader("Déficit por mes")
         
         # Añadir columna de mes si no existe
         if "mes_num" not in df.columns:
-            df["mes_num"] = df.index.month
-            df["mes_nombre"] = df.index.strftime('%B')  # Nombre del mes
+            df.loc[:, "mes_num"] = df.index.month
+            df.loc[:, "mes_nombre"] = df.index.strftime('%B')  # Nombre del mes
         
         # Definir nombres de meses en español
         meses_es = {
@@ -710,14 +919,17 @@ def app():
             "December": "Diciembre"
         }
         
-        # Calcular promedio de déficit por mes
-        deficit_por_mes = df.groupby('mes_num')['deficit'].mean()
+        # Calcular promedio de déficit por mes (solo con valores no nulos)
+        deficit_por_mes = df.dropna(subset=["deficit"]).groupby('mes_num')['deficit'].mean()
         
         # Crear lista de meses en orden
         meses_orden = list(range(1, 13))
         
         # Reindexar para mostrar todos los meses en orden
         deficit_por_mes = deficit_por_mes.reindex(meses_orden)
+        
+        # Eliminar NaN para la visualización
+        deficit_por_mes = deficit_por_mes.fillna(0)
         
         # Crear gráfico de barras
         fig_meses = px.bar(
@@ -737,6 +949,29 @@ def app():
         )
         
         st.plotly_chart(fig_meses, use_container_width=True)
+        
+        # Añadir información sobre los datos
+        with st.expander("Información sobre los datos"):
+            st.write("""
+            ### Fuente de datos
+            Los datos de déficit se extraen directamente de la sección "prediccion" en los reportes diarios,
+            específicamente del campo "deficit". Cuando no está disponible, se calcula como 
+            la diferencia entre la demanda máxima y la disponibilidad.
+            
+            ### Ejemplo de estructura de datos
+            ```json
+            {
+                "prediccion": {
+                    "disponibilidad": 2053,
+                    "demanda_maxima": 3400,
+                    "afectacion": 1417,
+                    "deficit": 1347,
+                    "respaldo": null,
+                    "horario_pico": "noche"
+                }
+            }
+            ```
+            """)
     
     with tab2:
         # Análisis de plantas y relación con déficit
