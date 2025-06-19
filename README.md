@@ -9,6 +9,57 @@ Este sistema automatiza la extracción de información sobre afectaciones eléct
 - **Almacenamiento organizado** por año/mes
 - **Evita duplicados** mediante control de URLs ya procesadas
 - **Registros detallados** del proceso completo
+- **Visualización interactiva** con Streamlit
+
+## Visualización de Datos
+
+Se ha implementado un panel de visualización interactivo utilizando Streamlit que permite:
+
+1. **Inicio**: Visualización de los datos del último día disponible en forma de tabla
+2. **Déficit**: Análisis y visualización de datos históricos de déficit eléctrico
+3. **Disponibilidad**: Análisis y visualización de datos históricos de disponibilidad eléctrica
+4. **Comparativas**: Visualizaciones comparativas entre déficit y disponibilidad
+
+## Ejecución y Despliegue
+
+### Ejecución Local
+
+Para ejecutar la aplicación de visualización localmente:
+
+1. Instalar las dependencias:
+```bash
+pip install -r requirements.txt
+```
+
+2. Ejecutar la aplicación:
+```bash
+streamlit run streamlit_app.py
+```
+
+3. La aplicación estará disponible en el navegador en `http://localhost:8501`
+
+### Despliegue en Streamlit Cloud
+
+Esta aplicación está optimizada para ser desplegada en [Streamlit Cloud](https://streamlit.io/cloud), siguiendo estos pasos:
+
+1. Crear una cuenta en Streamlit Cloud (si no tienes una)
+2. Conectar tu repositorio de GitHub con Streamlit Cloud
+3. Especificar `streamlit_app.py` como archivo principal
+4. No se requiere configuración adicional, Streamlit Cloud detectará automáticamente la aplicación
+
+### Actualizaciones Automáticas de Datos
+
+Para mantener los datos actualizados automáticamente cada día a las 9 AM:
+
+1. El repositorio incluye un workflow de GitHub Actions configurado en `.github/workflows/daily_update.yml`
+2. Este workflow ejecuta el scraper diariamente a las 9 AM, extrae datos nuevos y actualiza el repositorio
+3. Cuando se actualizan los datos en el repositorio, Streamlit Cloud los reflejará automáticamente
+
+#### Configuración Necesaria para Actualizaciones Automáticas
+
+1. En GitHub, ve a tu repositorio → Settings → Secrets and variables → Actions
+2. Agrega un nuevo secreto con nombre `FIREWORKS_API_KEY` y el valor de tu API key de Fireworks AI
+3. Activa GitHub Actions en tu repositorio (Settings → Actions → General)
 
 ## Estructura del Proyecto
 
@@ -18,6 +69,15 @@ Este sistema automatiza la extracción de información sobre afectaciones eléct
 │   ├── daily/                   # Datos organizados por día
 │   ├── processed/               # Datos procesados (JSON estructurado)
 │   └── raw/                     # Datos crudos (artículos, CSV)
+├── scraping/                    # Código de scraping de artículos
+├── Visualizacion/               # Aplicación de visualización con Streamlit
+│   ├── app.py                   # Punto de entrada de la aplicación
+│   ├── Deficit.py               # Módulo de análisis de déficit
+│   ├── Disponibilidad.py        # Módulo de análisis de disponibilidad
+│   └── mapping.py               # Funciones de mapeo de datos
+├── extract_json.py              # Script de extracción JSON con LLM
+├── requirements.txt             # Dependencias del proyecto
+└── README.md                    # Documentación
 ├── logs/                        # Logs del sistema
 ├── scraping/                    # Scripts de scraping
 │   ├── __init__.py              # Inicialización del módulo

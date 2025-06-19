@@ -1,0 +1,25 @@
+[theme]
+primaryColor="#F63366"
+backgroundColor="#FFFFFF"
+secondaryBackgroundColor="#F0F2F6"
+textColor="#262730"
+font="sans serif"
+
+[server]
+# En producción, estas opciones deberían ser true para mayor seguridad
+enableXsrfProtection=true
+enableCORS=true
+# Configuración del puerto
+port = 8501
+
+[browser]
+# Abrir automáticamente el navegador al iniciar
+serverAddress = "localhost"
+gatherUsageStats = false
+
+[deprecation]
+showPyplotGlobalUse = false
+
+[logger]
+# Nivel de log para depuración
+level = "INFO"

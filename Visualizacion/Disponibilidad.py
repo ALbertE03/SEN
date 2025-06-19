@@ -1,32 +1,8 @@
 import streamlit as st
-import json
-import os
 import pandas as pd
 import altair as alt
 from datetime import datetime, date
-
-def DIAS_REPETIDOS(entradas):
-    vistos = set()
-    unicas = []
-    for e in entradas:
-        d = e["fecha"].date()
-        if d not in vistos:
-            vistos.add(d)
-            unicas.append(e)
-    return unicas
-
-def cargar_datos():
-    base_dir = os.path.dirname(__file__)
-    ruta = os.path.join(base_dir, os.pardir, "data", "processed", "datos_electricos_organizados.json")
-    with open(ruta, "r", encoding="utf-8") as f:
-        raw = json.load(f)
-    entradas = []
-    for anio in raw:
-        for mes in raw[anio]:
-            for rec in raw[anio][mes]:
-                dt = datetime.fromisoformat(rec["fecha"])
-                entradas.append({"fecha": dt, "datos": rec["datos"]})
-    return DIAS_REPETIDOS(entradas)
+from .utils import cargar_datos
 
 def preparar_dataframe(entradas):
     filas = []
@@ -80,12 +56,14 @@ def contar_dias_operativos(entradas, plantas, sel_anos, inicio, fin):
     return cont
 
 def app():
+    st.header("Datos Históricos de Disponibilidad")
+    st.markdown("---")
     entradas = cargar_datos()
     df = preparar_dataframe(entradas)
     df_solar_gen, df_solar_cnt = preparar_datos_solares(entradas)
     plantas = obtener_plantas(entradas)
 
-    with st.expander("Disponibilidad: Comparativa y Analisis", expanded=True):
+    with st.expander("Comparativa y Análisis", expanded=True):
         anos = sorted(df.index.year.unique())
         sel_anos = st.multiselect("Seleccione anos", [str(a) for a in anos], default=[str(anos[-1])])
         inicio, fin = st.slider(

@@ -1,5 +1,24 @@
-.env
-**.log
+# Python bytecode
 **__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+
+# Logs
+**.log
+
+# System files
 .DS_Store
+
+# Editor settings
 .vscode
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
